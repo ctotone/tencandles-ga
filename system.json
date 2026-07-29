@@ -1,0 +1,79 @@
+{
+  "id": "tencandles-ga",
+  "type": "system",
+  "title": "Ten Candles – Game Assistant (Evilbram)",
+    "description": "Système communautaire non officiel pour jouer à Ten Candles sur Foundry VTT, avec fiche de personnage dédiée et gestion assistée des conflits, des bougies, des pools de dés, du canevas et des Instants.",
+  "authors": [
+    {
+      "name": "Evilbram"
+    }
+  ],
+  "background": "systems/tencandles-ga/assets/system-background.webp",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": 14,
+    "verified": 14
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/system.css"
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "manuels",
+      "label": "Manuels Ten Candles",
+      "path": "packs/manuels",
+      "type": "JournalEntry",
+      "banner": "systems/tencandles-ga/assets/scene/compendium-banner.webp",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {}
+    }
+  },
+  "socket": true,
+  "url": "https://github.com/ctotone/tencandles-ga",
+  "manifest": "https://github.com/ctotone/tencandles-ga/releases/latest/download/system.json",
+  "download": "https://github.com/ctotone/tencandles-ga/releases/download/1.0.0/tencandles-ga.zip",
+  "readme": "README.md",
+  "bugs": "https://github.com/ctotone/tencandles-ga/issues"
+}

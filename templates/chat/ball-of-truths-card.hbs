@@ -1,0 +1,70 @@
+<article
+  class="ets-design2-card ets-ball-card {{#if completed}}is-completed{{/if}}"
+  data-resolution-id="{{resolution.id}}"
+>
+  <header class="ets-design2-card__header">
+    <div>
+      <h3>{{localize "ETC.Chat.BallOfTruths"}}</h3>
+      <p>
+        {{#if narrationSeized}}
+          {{localize "ETC.Chat.BallNarrationSeized" name=resolution.actorName}}
+        {{else}}
+          {{localize "ETC.Chat.BallFailure" name=resolution.actorName}}
+        {{/if}}
+      </p>
+    </div>
+    <i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
+  </header>
+
+  {{#if collectiveSummary.visible}}
+    <section class="ets-collective-state-band">
+      <div>
+        <span>
+          {{localize "ETC.Collective.Candles"}}
+          <strong>{{collectiveSummary.litCandles}}</strong>
+        </span>
+        <span>
+          {{localize "ETC.Collective.PlayerPool"}}
+          <strong>{{collectiveSummary.bluePoolRemaining}}</strong>
+        </span>
+      </div>
+    </section>
+  {{/if}}
+
+  <section class="ets-design2-truth-counter">
+    <strong>{{truthsRequired}}</strong>
+    <span>{{truthsLabel}}</span>
+  </section>
+
+  {{#unless interrupted}}
+    <p class="ets-design2-card__body">
+      {{#if narrationSeized}}
+        {{localize "ETC.Chat.NarrationSeizedBallInstructions"}}
+      {{else}}
+        {{localize "ETC.Chat.BallInstructions"}}
+      {{/if}}
+    </p>
+  {{/unless}}
+
+  {{#if interrupted}}
+    <section class="ets-design2-result is-interrupted">
+      <strong>{{localize "ETC.Chat.BallInterrupted"}}</strong>
+      <span>{{localize "ETC.Chat.BallInterruptedHelp"}}</span>
+    </section>
+  {{else if completed}}
+    <section class="ets-design2-result is-success">
+      <strong>{{localize "ETC.Chat.NewSceneReady"}}</strong>
+    </section>
+  {{else}}
+    <section class="ets-design2-actions" data-gm-actions>
+      <button
+        type="button"
+        class="ets-design2-action is-primary ets-next-scene-action"
+        data-resolution-action="start-next-scene"
+      >
+        <i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
+        <span>{{localize "ETC.Chat.StartNextScene"}}</span>
+      </button>
+    </section>
+  {{/if}}
+</article>

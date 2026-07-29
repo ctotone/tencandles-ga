@@ -1,0 +1,345 @@
+<div class="etc-state-control-content">
+  <header class="etc-state-control-header">
+    <div>
+      <h2>{{localize "ETC.StateControl.Heading"}}</h2>
+      <p>{{localize "ETC.StateControl.Description"}}</p>
+    </div>
+
+    {{#unless state.canModify}}
+      <span class="etc-authority-warning">
+        {{localize "ETC.StateControl.ReadOnly"}}
+      </span>
+    {{/unless}}
+  </header>
+
+  <div class="etc-state-control-layout">
+    <div class="etc-state-control-column">
+      <section class="etc-state-control-grid">
+        <article class="etc-counter-card">
+          <span>{{localize "ETC.Collective.Candles"}}</span>
+
+          <div class="etc-counter">
+            <button
+              type="button"
+              data-state-action="candles-decrease"
+              aria-label="{{localize "ETC.StateControl.DecreaseCandles"}}"
+              {{#unless state.canEditMechanics}}disabled{{/unless}}
+            >
+              <i class="fa-solid fa-minus"></i>
+            </button>
+
+            <strong>{{state.litCandles}}</strong>
+
+            <button
+              type="button"
+              data-state-action="candles-increase"
+              aria-label="{{localize "ETC.StateControl.IncreaseCandles"}}"
+              {{#unless state.canEditMechanics}}disabled{{/unless}}
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <small>/ {{state.totalCandles}}</small>
+        </article>
+
+        <article class="etc-counter-card">
+          <span>{{localize "ETC.Collective.PlayerPool"}}</span>
+
+          <div class="etc-counter">
+            <button
+              type="button"
+              data-state-action="blue-decrease"
+              aria-label="{{localize "ETC.StateControl.DecreasePlayerPool"}}"
+              {{#unless state.canEditMechanics}}disabled{{/unless}}
+            >
+              <i class="fa-solid fa-minus"></i>
+            </button>
+
+            <strong>{{state.bluePoolRemaining}}</strong>
+
+            <button
+              type="button"
+              data-state-action="blue-increase"
+              aria-label="{{localize "ETC.StateControl.IncreasePlayerPool"}}"
+              {{#unless state.canEditMechanics}}disabled{{/unless}}
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <button
+            type="button"
+            class="etc-restore-button"
+            data-state-action="blue-restore"
+            {{#unless state.canEditMechanics}}disabled{{/unless}}
+          >
+            <i class="fa-solid fa-rotate-left"></i>
+            {{localize "ETC.StateControl.RestorePlayerPool"}}
+          </button>
+        </article>
+
+        <article class="etc-counter-card etc-counter-card--readonly">
+          <span>{{localize "ETC.StateControl.GMPool"}}</span>
+          <strong class="etc-readonly-value">{{state.redPoolSize}}</strong>
+        </article>
+      </section>
+
+      <section class="etc-state-control-details">
+        <section class="etc-presentation-control">
+          <label>
+            <span>{{localize "ETC.Presentation.Label"}}</span>
+            <select
+              name="presentationMode"
+              {{#unless state.canModify}}disabled{{/unless}}
+            >
+              <option
+                value="{{presentationModes.official.value}}"
+                {{#if presentationModes.official.selected}}selected{{/if}}
+              >
+                {{presentationModes.official.label}}
+              </option>
+              <option
+                value="{{presentationModes.personal.value}}"
+                {{#if presentationModes.personal.selected}}selected{{/if}}
+              >
+                {{presentationModes.personal.label}}
+              </option>
+            </select>
+          </label>
+
+          <p>{{presentation.description}}</p>
+        </section>
+
+        <div class="etc-state-readonly-field">
+          <span>{{localize "ETC.Collective.Stage"}}</span>
+          <strong>{{state.stageLabel}}</strong>
+        </div>
+
+        {{#if state.canStartNextScene}}
+          <section class="etc-ball-control">
+            <div>
+              <strong>{{localize "ETC.StateControl.BallActive"}}</strong>
+              <span>{{ball.truthsRequiredLabel}}</span>
+            </div>
+
+            <button type="button" data-state-action="start-next-scene">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              {{localize "ETC.Chat.StartNextScene"}}
+            </button>
+          </section>
+        {{/if}}
+
+        {{#if narrationSeize.visible}}
+          <section class="etc-narration-seize-control">
+            <div>
+              <strong>{{localize "ETC.NarrationSeize.Title"}}</strong>
+              <span>{{localize "ETC.NarrationSeize.Description" name=narrationSeize.actorName candles=narrationSeize.nextCandles}}</span>
+            </div>
+
+            <button type="button" data-state-action="seize-narration">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              {{localize "ETC.NarrationSeize.RegieButton"}}
+            </button>
+          </section>
+        {{/if}}
+
+        <dl>
+          <div class="etc-state-resolution-row">
+            <dt>{{localize "ETC.Collective.ActiveResolution"}}</dt>
+            <dd>
+              {{#if state.hasActiveResolution}}
+                <span>{{state.activeResolution.actorName}}</span>
+                {{#if state.canModify}}
+                  {{#if state.canRollGM}}
+                    <button type="button" class="etc-roll-gm" data-state-action="gm-roll">
+                      <i class="fa-solid fa-dice"></i>
+                      {{localize "ETC.Chat.RollGMPool"}}
+                    </button>
+                  {{/if}}
+
+                  {{#if state.canValidateResolution}}
+                    <button type="button" class="etc-validate-resolution" data-state-action="validate-resolution">
+                      <i class="fa-solid fa-check"></i>
+                      {{localize "ETC.Chat.ValidateResolution"}}
+                    </button>
+                  {{/if}}
+
+                  <button type="button" class="etc-cancel-resolution" data-state-action="cancel-resolution">
+                    <i class="fa-solid fa-ban"></i>
+                    {{localize "ETC.Chat.CancelResolution"}}
+                  </button>
+                {{/if}}
+              {{else}}
+                {{localize "ETC.Common.No"}}
+              {{/if}}
+            </dd>
+          </div>
+
+          <div>
+            <dt>{{localize "ETC.Collective.GameId"}}</dt>
+            <dd title="{{state.gameId}}">{{state.gameIdShort}}</dd>
+          </div>
+
+          <div>
+            <dt>{{localize "ETC.Collective.CreatedAt"}}</dt>
+            <dd>{{state.createdAtLabel}}</dd>
+          </div>
+
+          <div>
+            <dt>{{localize "ETC.Collective.ActiveGM"}}</dt>
+            <dd>{{state.activeGMName}}</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+
+    <div class="etc-state-control-column">
+      <section class="etc-actor-management">
+        <header>
+          <div>
+            <h3>{{localize "ETC.ActorManagement.Title"}}</h3>
+            <p>{{localize "ETC.ActorManagement.Description"}}</p>
+          </div>
+        </header>
+
+        {{#if actorManagement.hasCharacters}}
+          <label class="etc-actor-management__selector">
+            <span>{{localize "ETC.ActorManagement.Character"}}</span>
+            <select name="managedActorId">
+              <option value="">{{localize "ETC.ActorManagement.SelectCharacter"}}</option>
+              {{#each actorManagement.characters}}
+                <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+              {{/each}}
+            </select>
+          </label>
+
+          {{#if actorManagement.blockedByConflict}}
+            <p class="etc-actor-management__warning">
+              <i class="fa-solid fa-lock"></i>
+              {{localize "ETC.ActorManagement.ConflictBlocked"}}
+            </p>
+          {{/if}}
+
+          {{#if actorManagement.hasSelectedActor}}
+            <div class="etc-actor-management__grid">
+              <label>
+                <span>{{localize "ETC.Character.Vice"}}</span>
+                <select name="viceAvailable" {{#unless actorManagement.canEdit}}disabled{{/unless}}>
+                  <option value="true" {{#if actorManagement.viceAvailable}}selected{{/if}}>{{localize "ETC.ActorManagement.Available"}}</option>
+                  <option value="false" {{#unless actorManagement.viceAvailable}}selected{{/unless}}>{{localize "ETC.ActorManagement.Consumed"}}</option>
+                </select>
+              </label>
+
+              <label>
+                <span>{{localize "ETC.Character.Virtue"}}</span>
+                <select name="virtueAvailable" {{#unless actorManagement.canEdit}}disabled{{/unless}}>
+                  <option value="true" {{#if actorManagement.virtueAvailable}}selected{{/if}}>{{localize "ETC.ActorManagement.Available"}}</option>
+                  <option value="false" {{#unless actorManagement.virtueAvailable}}selected{{/unless}}>{{localize "ETC.ActorManagement.Consumed"}}</option>
+                </select>
+              </label>
+
+              <label class="etc-actor-management__instant">
+                <span>{{localize "ETC.Character.Moment"}}</span>
+                <select name="momentStatus" {{#unless actorManagement.canEdit}}disabled{{/unless}}>
+                  {{#each actorManagement.momentOptions}}
+                    <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+
+            <button
+              type="button"
+              class="etc-actor-management__save"
+              data-state-action="actor-resources-save"
+              {{#unless actorManagement.canEdit}}disabled{{/unless}}
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+              {{localize "ETC.ActorManagement.Save"}}
+            </button>
+          {{else}}
+            <p class="etc-actor-management__empty">{{localize "ETC.ActorManagement.NoSelection"}}</p>
+          {{/if}}
+        {{else}}
+          <p class="etc-actor-management__empty">{{localize "ETC.ActorManagement.NoCharacters"}}</p>
+        {{/if}}
+      </section>
+
+      <section class="etc-canvas-control">
+        <header>
+          <div>
+            <h3>{{localize "ETC.Canvas.ControlTitle"}}</h3>
+            <p>
+              {{#if state.isPersonalPresentation}}
+                {{localize "ETC.Canvas.PersonalModeDescription"}}
+              {{else}}
+                {{localize "ETC.Canvas.ControlDescription"}}
+              {{/if}}
+            </p>
+          </div>
+
+          <span class="etc-canvas-status {{#if canvas.exists}}is-ready{{else}}is-missing{{/if}}">{{canvas.statusLabel}}</span>
+        </header>
+
+        <dl>
+          <div>
+            <dt>{{localize "ETC.Canvas.Scene"}}</dt>
+            <dd>{{canvas.sceneName}}</dd>
+          </div>
+          <div>
+            <dt>{{localize "ETC.Canvas.Template"}}</dt>
+            <dd>{{canvas.templateId}} — v{{canvas.templateVersion}}</dd>
+          </div>
+        </dl>
+
+        <div class="etc-canvas-actions">
+          <button type="button" data-state-action="canvas-view" {{#unless canvas.canView}}disabled{{/unless}}>
+            <i class="fa-solid fa-map"></i>
+            {{localize "ETC.Canvas.View"}}
+          </button>
+          <button type="button" data-state-action="canvas-sync" {{#unless canvas.canSync}}disabled{{/unless}}>
+            <i class="fa-solid fa-arrows-rotate"></i>
+            {{localize "ETC.Canvas.Sync"}}
+          </button>
+          <button type="button" data-state-action="canvas-repair" {{#unless canvas.canRepair}}disabled{{/unless}}>
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            {{localize "ETC.Canvas.Repair"}}
+          </button>
+        </div>
+      </section>
+
+      <section class="etc-new-game-control">
+        <header>
+          <div>
+            <h3>{{localize "ETC.NewGame.SectionTitle"}}</h3>
+            <p>{{localize "ETC.NewGame.SectionDescription"}}</p>
+          </div>
+        </header>
+
+        <dl>
+          <div>
+            <dt>{{localize "ETC.Collective.CreatedAt"}}</dt>
+            <dd>{{state.createdAtLabel}}</dd>
+          </div>
+          <div>
+            <dt>{{localize "ETC.Collective.GameId"}}</dt>
+            <dd title="{{state.gameId}}">{{state.gameIdShort}}</dd>
+          </div>
+        </dl>
+
+        <button
+          type="button"
+          class="etc-new-game-control__button"
+          data-state-action="create-new-game"
+          {{#unless state.canCreateNewGame}}disabled{{/unless}}
+        >
+          <i class="fa-solid fa-fire-flame-curved"></i>
+          <span>{{localize "ETC.NewGame.CreateButton"}}</span>
+        </button>
+      </section>
+    </div>
+  </div>
+
+  <footer>{{localize "ETC.StateControl.PersistenceNote"}}</footer>
+</div>

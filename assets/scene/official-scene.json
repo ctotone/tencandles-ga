@@ -1,0 +1,2393 @@
+{
+  "name": "Le monde est sombre...",
+  "navigation": true,
+  "thumb": "systems/tencandles-ga/assets/scene/background.webp",
+  "width": 3840,
+  "height": 2160,
+  "padding": 0.25,
+  "shiftX": 0,
+  "shiftY": 0,
+  "initial": {
+    "x": 3018,
+    "y": 1726,
+    "scale": 0.422
+  },
+  "initialLevel": "defaultLevel0000",
+  "grid": {
+    "type": 0,
+    "size": 50,
+    "style": "solidLines",
+    "thickness": 5,
+    "color": "#ffffff",
+    "alpha": 0.2,
+    "distance": 1,
+    "units": ""
+  },
+  "tokenVision": false,
+  "fog": {
+    "mode": 1,
+    "colors": {
+      "explored": null,
+      "unexplored": null
+    }
+  },
+  "environment": {
+    "darknessLevel": 0.5,
+    "darknessLock": false,
+    "globalLight": {
+      "enabled": false,
+      "alpha": 0.5,
+      "bright": false,
+      "color": null,
+      "coloration": 1,
+      "luminosity": 0,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "darkness": {
+        "min": 0,
+        "max": 0.2
+      }
+    },
+    "cycle": true,
+    "base": {
+      "hue": 0,
+      "intensity": 0,
+      "luminosity": 0,
+      "saturation": 0,
+      "shadows": 0
+    },
+    "dark": {
+      "hue": 0.7138888888888889,
+      "intensity": 0,
+      "luminosity": -0.25,
+      "saturation": 0,
+      "shadows": 0
+    }
+  },
+  "transition": {
+    "type": null,
+    "duration": 1500,
+    "activeOnly": false
+  },
+  "drawings": [
+    {
+      "strokeWidth": 0,
+      "strokeColor": "#ffffff",
+      "strokeAlpha": 1,
+      "bezierFactor": 0,
+      "fillType": 0,
+      "fillColor": "#ffffff",
+      "fillAlpha": 0.5,
+      "texture": null,
+      "text": "Ten Candles",
+      "fontFamily": "special-elite",
+      "fontSize": 175,
+      "textColor": "#ffffff",
+      "textAlpha": 1,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "interface": false,
+      "x": 2026,
+      "y": 730,
+      "sort": 0,
+      "shape": {
+        "type": "r",
+        "width": 1850,
+        "height": 358,
+        "radius": null,
+        "points": []
+      },
+      "_id": "6T27DUyDaK1pJBTA",
+      "rotation": 0,
+      "hidden": false,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "scene-title",
+          "index": 1
+        }
+      },
+      "name": ""
+    }
+  ],
+  "tokens": [],
+  "levels": [
+    {
+      "_id": "defaultLevel0000",
+      "name": "Niveau",
+      "elevation": {
+        "bottom": 0,
+        "top": 20
+      },
+      "background": {
+        "color": "#000000",
+        "src": "systems/tencandles-ga/assets/scene/background.webp",
+        "tint": "#ffffff",
+        "alphaThreshold": 0.75
+      },
+      "foreground": {
+        "src": null,
+        "tint": "#ffffff",
+        "alphaThreshold": 0.75
+      },
+      "fog": {
+        "src": null
+      },
+      "textures": {
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "offsetX": 0,
+        "offsetY": 0,
+        "fit": "fill",
+        "scaleX": 1,
+        "scaleY": 1,
+        "rotation": 0
+      },
+      "visibility": {
+        "levels": []
+      },
+      "sort": 0,
+      "flags": {
+        "tencandles-ga": {
+          "role": "scene-level",
+          "index": 1
+        }
+      }
+    }
+  ],
+  "lights": [
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "_id": "2F9owzm8RsDXu5dd",
+      "x": 3279,
+      "y": 844,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 1
+        }
+      }
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 6",
+      "_id": "7HUjurxm0vSgcpC2",
+      "x": 3210,
+      "y": 1327,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 6
+        }
+      }
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 2249,
+      "y": 2303,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 2
+        }
+      },
+      "_id": "9FelzJN5yWb3A5q4"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 3457,
+      "y": 2310,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 3
+        }
+      },
+      "_id": "DAH0d0Av7I5yhwYK"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 2620,
+      "y": 846,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 4
+        }
+      },
+      "_id": "N9rOd0HZk52zUOm6"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 3050,
+      "y": 2308,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 5
+        }
+      },
+      "_id": "OtbdxlQkyRI43BJA"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 8",
+      "x": 2937,
+      "y": 1733,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 8
+        }
+      },
+      "_id": "QmcCG5rMjweCIG50"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 9",
+      "x": 2522,
+      "y": 1565,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 9
+        }
+      },
+      "_id": "WgGd6ooN25gyLbhd"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 3749,
+      "y": 2306,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 6
+        }
+      },
+      "_id": "WwRo73ZIS06MXEVj"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 2647,
+      "y": 2301,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 7
+        }
+      },
+      "_id": "Xxglxt5z8gJZaOcI"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 0.85,
+        "luminosity": 1,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 1",
+      "x": 2980,
+      "y": 1277,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 1
+        }
+      },
+      "_id": "YUX8Ta6rzAZwsMfr"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 4",
+      "x": 3352,
+      "y": 1550,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 4
+        }
+      },
+      "_id": "bC7EyjPpIcGTcKmJ"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 3",
+      "x": 2534,
+      "y": 1382,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 3
+        }
+      },
+      "_id": "c6d7wZb84Qcp7n2b"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": true,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
+        "angle": 360,
+        "color": null,
+        "coloration": 1,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 3,
+        "dim": 6
+      },
+      "name": "Lumière ambiante",
+      "x": 2981,
+      "y": 844,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "ambient-light",
+          "index": 8
+        }
+      },
+      "_id": "fIV7TnMQFACfdPPm"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 5",
+      "x": 2686,
+      "y": 1643,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 5
+        }
+      },
+      "_id": "lJRrM6PbDZLlFbQa"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 10",
+      "x": 3362,
+      "y": 1429,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 10
+        }
+      },
+      "_id": "qeR9c3beQvUnvqdH"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 2",
+      "x": 3166,
+      "y": 1649,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 2
+        }
+      },
+      "_id": "v4IRUpd2gTkzqa3V"
+    },
+    {
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "walls": false,
+      "vision": false,
+      "hidden": false,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.6,
+        "angle": 360,
+        "color": "#d2cb79",
+        "coloration": 1,
+        "attenuation": 1,
+        "luminosity": 0.8,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "flame",
+          "speed": 2,
+          "intensity": 1,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        },
+        "bright": 0,
+        "dim": 3
+      },
+      "name": "Lumière 7",
+      "x": 2701,
+      "y": 1317,
+      "rotation": 0,
+      "locked": false,
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-light",
+          "index": 7
+        }
+      },
+      "_id": "wsJDKp5iFE8MSCzF"
+    }
+  ],
+  "notes": [],
+  "sounds": [],
+  "regions": [],
+  "tiles": [
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3050,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 2
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "0WqcPh7dqPAHL0jc",
+      "name": "D bleu 2"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3170,
+      "y": 1616,
+      "width": 68,
+      "height": 200,
+      "sort": 0,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 2
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "0rJe4yeuzcjtMI5a",
+      "name": "Flamme 2"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2450,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 6
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "1k1JMxWoYnSM2PMu",
+      "name": "D rouge 6"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2529,
+      "y": 1383,
+      "width": 68,
+      "height": 200,
+      "sort": 0,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 3
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "3X4tW7uKC1PAF4C8",
+      "name": "Flamme 3"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2699,
+      "y": 1300,
+      "width": 68,
+      "height": 200,
+      "sort": 1,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 7
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "3dDFJWS5iPxjPy87",
+      "name": "Flamme 7"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3450,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 5
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "3l8C6etXvMAKDNJD",
+      "name": "D rouge 5"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3364,
+      "y": 1422,
+      "width": 51,
+      "height": 150,
+      "sort": 1,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 10
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "4deu4U4haZHAsVVi",
+      "name": "Flamme 10"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3343,
+      "y": 1543,
+      "width": 51,
+      "height": 150,
+      "sort": 0,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 4
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "5p1KEcnq5CMLsjyR",
+      "name": "Flamme 4"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3250,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 7
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "6I7iLXNW64R7sAoN",
+      "name": "D rouge 7"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2935,
+      "y": 1664,
+      "width": 68,
+      "height": 200,
+      "sort": 0,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 8
+        }
+      },
+      "_id": "9gkoWfLUWUtOnBmK",
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "name": "Flamme 8"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3850,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 1
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "Bdieusvieu4zDZkv",
+      "name": "D rouge 1"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3650,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 3
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "GCDv37CVDgSYNuGV",
+      "name": "D rouge 3"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2250,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 7
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "Ib5GUkQmqBmDEykb",
+      "name": "D bleu 7"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3050,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 9
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "L0rxrjnTAGoEuDlF",
+      "name": "D rouge 9"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2050,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 9
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "MVkF8Yb6IY9l4luM",
+      "name": "D bleu 9"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2514,
+      "y": 1536,
+      "width": 51,
+      "height": 150,
+      "sort": 1,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 9
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "PsjqE8vQLQ6ArP2t",
+      "name": "Flamme 9"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2691,
+      "y": 1622,
+      "width": 68,
+      "height": 200,
+      "sort": 1,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 5
+        }
+      },
+      "_id": "Pw2e0sxetWVN0ZJt",
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "name": "Flamme 5"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3850,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 10
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "Uwk3qsSkjT7atGNp",
+      "name": "D bleu 10"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2650,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 3
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "WXfezoJga1CPGAW8",
+      "name": "D bleu 3"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3250,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 4
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "dPcknOoC7Qi4Kuju",
+      "name": "D bleu 4"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2050,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 2
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "fTp3MwkSOluA7IJ9",
+      "name": "D rouge 2"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2650,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 8
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "iLfbnRLIphufmcZW",
+      "name": "D rouge 8"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2250,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 4
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "kywGwFx7qcaMeOq1",
+      "name": "D rouge 4"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2850,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 1
+        }
+      },
+      "_id": "mq5uppRITYtySuHV",
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "name": "D bleu 1"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2450,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 5
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "nal6pwbUIeIIhQH7",
+      "name": "D bleu 5"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/red_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2850,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 3,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 0,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "red-die",
+          "index": 10
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "r9dOiGKC53Scg83d",
+      "name": "D rouge 10"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 2972,
+      "y": 1274,
+      "width": 68,
+      "height": 200,
+      "sort": 0,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 1
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "rwIfHm5UrHu9xV3R",
+      "name": "Flamme 1"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3206,
+      "y": 1307,
+      "width": 68,
+      "height": 200,
+      "sort": 1,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "candle-flame",
+          "index": 6
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "upYmvNmMAKLCztJC",
+      "name": "Flamme 6"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3450,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 6
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "x7OPVPSblnpMC8bb",
+      "name": "D bleu 6"
+    },
+    {
+      "texture": {
+        "src": "systems/tencandles-ga/assets/scene/dice/blue_dice.webp",
+        "anchorX": 0.5,
+        "anchorY": 0.5,
+        "scaleX": 1,
+        "scaleY": 1,
+        "tint": "#ffffff",
+        "fit": "fill",
+        "alphaThreshold": 0.75
+      },
+      "x": 3650,
+      "y": 2300,
+      "width": 200,
+      "height": 200,
+      "sort": 2,
+      "elevation": 0,
+      "levels": [
+        "defaultLevel0000"
+      ],
+      "alpha": 1,
+      "restrictions": {
+        "light": false,
+        "weather": false
+      },
+      "occlusion": {
+        "modes": [],
+        "alpha": 0
+      },
+      "video": {
+        "loop": true,
+        "autoplay": true,
+        "volume": 0
+      },
+      "flags": {
+        "tencandles-ga": {
+          "role": "blue-die",
+          "index": 8
+        }
+      },
+      "rotation": 0,
+      "hidden": false,
+      "locked": true,
+      "_id": "y5TYMRxmXlhiPokh",
+      "name": "D bleu 8"
+    }
+  ],
+  "walls": [],
+  "playlist": null,
+  "playlistSound": null,
+  "journal": null,
+  "journalEntryPage": null,
+  "weather": "",
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "tencandles-ga": {
+      "template": "official-canvas",
+      "templateId": "official-dark",
+      "templateVersion": 3
+    }
+  },
+  "navName": ""
+}

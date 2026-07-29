@@ -1,0 +1,161 @@
+<div class="etc-sheet-content">
+  <header class="etc-sheet-header">
+    <div class="etc-sheet-portrait-frame">
+      <img
+        class="etc-sheet-portrait"
+        src="{{actor.img}}"
+        alt="{{actor.name}}"
+        data-action="editImage"
+        data-edit="img"
+      >
+    </div>
+
+    <div class="etc-sheet-identity">
+      <label class="etc-field etc-field--name">
+        <span class="etc-field-label etc-field-label--name">{{localize "ETC.Character.Name"}}</span>
+        <input
+          type="text"
+          class="etc-name-input"
+          name="name"
+          value="{{actor.name}}"
+          placeholder="{{localize "ETC.Character.NamePlaceholder"}}"
+          autocomplete="off"
+          {{#unless editable}}disabled{{/unless}}
+        >
+      </label>
+
+      <label class="etc-field etc-field--concept">
+        <span class="etc-field-label etc-field-label--concept">{{localize "ETC.Character.Concept"}}</span>
+        <textarea
+          class="etc-concept-input"
+          name="system.concept"
+          rows="4"
+          spellcheck="true"
+          placeholder="{{localize "ETC.Character.ConceptPlaceholder"}}"
+          {{#unless editable}}disabled{{/unless}}
+        >{{system.concept}}</textarea>
+        <button
+          type="button"
+          class="etc-concept-toggle"
+          aria-expanded="false"
+          hidden
+        >
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </label>
+    </div>
+  </header>
+
+  <button
+    type="button"
+    class="ets-sheet-roll etc-sheet-roll-primary"
+    {{#unless collective.canStartConflict}}disabled{{/unless}}
+    {{#unless canRollActor}}disabled{{/unless}}
+  >
+    {{rollButtonLabel}}
+  </button>
+
+
+  <section class="etc-resource-grid">
+    {{#each resourceCards as |resource|}}
+      <article
+        class="etc-resource etc-resource--{{resource.key}} {{resource.stateClass}}"
+        data-resource-key="{{resource.key}}"
+      >
+        <div class="etc-resource-heading">
+          <h2 class="etc-resource-title">{{resource.title}}</h2>
+
+          <div class="etc-resource-heading-controls">
+            <button
+              type="button"
+              class="etc-resource-state-action"
+              data-resource-action="{{resource.action}}"
+              {{#if resource.requestId}}data-request-id="{{resource.requestId}}"{{/if}}
+              {{#if resource.actionDisabled}}disabled{{/if}}
+            >
+              {{resource.actionLabel}}
+            </button>
+
+            {{#if resource.draggable}}
+              <span
+                class="etc-resource-drag-handle"
+                title="{{localize "ETC.Character.MoveCard"}}"
+                aria-label="{{localize "ETC.Character.MoveCard"}}"
+                draggable="true"
+              >
+                <i class="fa-solid fa-grip-lines etc-resource-drag-icon"></i>
+              </span>
+            {{/if}}
+          </div>
+        </div>
+
+        <textarea
+          class="etc-resource-text"
+          name="{{resource.textPath}}"
+          rows="5"
+          spellcheck="true"
+          placeholder="{{resource.placeholder}}"
+          {{#unless ../editable}}disabled{{/unless}}
+        >{{resource.text}}</textarea>
+      </article>
+    {{/each}}
+
+    <article class="etc-resource etc-resource--brink {{brink.stateClass}}">
+      <div class="etc-resource-heading">
+        <div>
+          <h2 class="etc-resource-title etc-resource-title--brink">{{localize "ETC.Character.Brink"}}</h2>
+        </div>
+
+        <span
+          class="etc-resource-state-indicator"
+          role="status"
+          aria-label="{{brink.statusHelp}}"
+          data-tooltip="{{brink.statusHelp}}"
+        >
+          {{brink.statusLabel}}
+        </span>
+      </div>
+
+      <textarea
+        class="etc-resource-text"
+        name="system.brink.text"
+        rows="5"
+        spellcheck="true"
+        placeholder="{{localize "ETC.Character.BrinkPlaceholder"}}"
+        {{#unless editable}}disabled{{/unless}}
+      >{{brink.text}}</textarea>
+    </article>
+  </section>
+
+  <details class="etc-collective-summary">
+    <summary class="etc-collective-heading">
+      <div class="etc-collective-heading-content">
+        <h2 class="etc-collective-title">{{localize "ETC.Collective.CurrentGameTitle"}}</h2>
+      </div>
+      <i class="fa-solid fa-chevron-down etc-collective-chevron"></i>
+    </summary>
+
+    <div class="etc-collective-values">
+      <div class="etc-collective-value etc-collective-value--candles">
+        <span class="etc-collective-label">{{localize "ETC.Collective.Candles"}}</span>
+        <strong class="etc-collective-number">{{collective.litCandles}}</strong>
+      </div>
+
+      <div class="etc-collective-value etc-collective-value--players">
+        <span class="etc-collective-label">{{localize "ETC.Collective.PlayerPool"}}</span>
+        <strong class="etc-collective-number">{{collective.bluePoolRemaining}}</strong>
+      </div>
+
+      <div class="etc-collective-value etc-collective-value--gm">
+        <span class="etc-collective-label">{{localize "ETC.Collective.GMPool"}}</span>
+        <strong class="etc-collective-number">{{collective.redPoolSize}}</strong>
+      </div>
+
+      <div class="etc-collective-value etc-collective-value--stage">
+        <span class="etc-collective-label">{{localize "ETC.Collective.Stage"}}</span>
+        <strong class="etc-collective-number">{{collective.stageLabel}}</strong>
+      </div>
+    </div>
+  </details>
+
+</div>

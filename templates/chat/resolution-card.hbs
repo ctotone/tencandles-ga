@@ -1,0 +1,270 @@
+<article
+  class="ets-resolution-card ets-conflict-card ets-design2-card {{#if cancelled}}is-cancelled{{/if}} {{#if resolved}}is-resolved{{/if}}"
+  data-resolution-id="{{resolution.id}}"
+  data-player-id="{{resolution.playerId}}"
+>
+  <header class="ets-conflict-card__header">
+    <h3>{{localize "ETC.Chat.Conflict"}}</h3>
+
+    {{#if cancelled}}
+      <span
+        class="ets-conflict-status is-cancelled"
+        aria-label="{{localize "ETC.Chat.Cancelled"}}"
+      >
+        {{localize "ETC.Chat.Cancelled"}}
+      </span>
+    {{else if awaitingGM}}
+      <span
+        class="ets-conflict-status is-awaiting-gm"
+        title="{{localize "ETC.Chat.WaitingGM"}}"
+        aria-label="{{localize "ETC.Chat.WaitingGM"}}"
+      >
+        <i class="fa-solid fa-dice" aria-hidden="true"></i>
+      </span>
+    {{else if pendingValidation}}
+      <span
+        class="ets-conflict-status is-pending-validation"
+        title="{{localize "ETC.Chat.WaitingValidation"}}"
+        aria-label="{{localize "ETC.Chat.WaitingValidation"}}"
+      >
+        <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+      </span>
+    {{else if resolved}}
+      <span
+        class="ets-conflict-status is-resolved"
+        title="{{localize "ETC.Chat.Resolved"}}"
+        aria-label="{{localize "ETC.Chat.Resolved"}}"
+      >
+        <i class="fa-solid fa-check" aria-hidden="true"></i>
+      </span>
+    {{else}}
+      <span class="ets-conflict-card__status-slot" aria-hidden="true"></span>
+    {{/if}}
+  </header>
+
+  {{#if collectiveSummary.visible}}
+    <section class="ets-collective-state-band">
+      <div>
+        <span>
+          {{localize "ETC.Collective.Candles"}}
+          <strong>{{collectiveSummary.litCandles}}</strong>
+        </span>
+        <span>
+          {{localize "ETC.Collective.PlayerPool"}}
+          <strong>{{collectiveSummary.bluePoolRemaining}}</strong>
+        </span>
+      </div>
+    </section>
+  {{/if}}
+
+  <div class="ets-conflict-player-row {{#if hasPlayerActions}}has-actions{{/if}}">
+    <section class="ets-conflict-pool is-player">
+      <div class="ets-conflict-pool__heading">
+        <strong>{{resolution.actorName}}</strong>
+      </div>
+
+      <div class="ets-dice-row">
+        {{#each blueDice}}
+          <span class="{{cssClass}}" title="{{title}}">{{value}}</span>
+        {{/each}}
+      </div>
+
+      {{#if hasHope}}
+        <div class="ets-conflict-hope">
+          <strong>{{localize "ETC.Chat.HopeDie"}}</strong>
+          <div class="ets-dice-row ets-dice-row--hope">
+            {{#each hopeDice}}
+              <span class="{{cssClass}}" title="{{title}}">{{value}}</span>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+    </section>
+
+    {{#if hasPlayerActions}}
+      <section
+        class="ets-conflict-resource-actions"
+        data-player-actions
+        aria-label="{{localize "ETC.Chat.PlayerActions"}}"
+      >
+        {{#if showVirtueButton}}
+          <button
+            type="button"
+            class="ets-conflict-resource-action is-virtue"
+            data-resolution-action="use-virtue"
+            {{#if viceVirtueDisabled}}disabled{{/if}}
+            title="{{localize "ETC.Chat.RerollOnesHelp"}}"
+          >
+            {{localize "ETC.Character.Virtue"}}
+          </button>
+        {{/if}}
+
+        {{#if showViceButton}}
+          <button
+            type="button"
+            class="ets-conflict-resource-action is-vice"
+            data-resolution-action="use-vice"
+            {{#if viceVirtueDisabled}}disabled{{/if}}
+            title="{{localize "ETC.Chat.RerollOnesHelp"}}"
+          >
+            {{localize "ETC.Character.Vice"}}
+          </button>
+        {{/if}}
+
+        {{#if showLimitButton}}
+          <button
+            type="button"
+            class="ets-conflict-resource-action is-limit"
+            data-resolution-action="use-limit"
+            {{#if limitDisabled}}disabled{{/if}}
+            title="{{localize "ETC.Chat.LimitHelp"}}"
+          >
+            {{localize "ETC.Character.Brink"}}
+          </button>
+        {{/if}}
+      </section>
+    {{/if}}
+  </div>
+
+  {{#if hasGMPool}}
+    <div class="ets-conflict-gm-row">
+      <section class="ets-conflict-pool is-gm {{#if gmRollPending}}is-waiting{{/if}}">
+        <div class="ets-conflict-pool__heading">
+          <strong>{{localize "ETC.Chat.GMName"}}</strong>
+        </div>
+
+        {{#if resolution.gmRollCompleted}}
+          <div class="ets-dice-row">
+            {{#each redDice}}
+              <span class="{{cssClass}}" title="{{title}}">{{value}}</span>
+            {{/each}}
+          </div>
+        {{else if gmRollSkipped}}
+          <p class="ets-conflict-empty">
+            {{localize "ETC.Chat.GMRollSkipped"}}
+          </p>
+        {{else if gmRollPending}}
+          <div class="ets-conflict-gm-reserved-space">
+            <div class="ets-dice-row is-sizer" aria-hidden="true">
+              {{#each gmPlaceholderDice}}
+                <span class="{{cssClass}}">{{value}}</span>
+              {{/each}}
+            </div>
+
+            <button
+              type="button"
+              class="ets-conflict-gm-roll"
+              data-resolution-action="gm-roll"
+              data-gm-actions
+            >
+              <i class="fa-solid fa-dice" aria-hidden="true"></i>
+              <span>{{localize "ETC.Chat.RollGMPool"}}</span>
+            </button>
+          </div>
+        {{else}}
+          <p class="ets-conflict-empty">
+            {{localize "ETC.Chat.GMRollPending"}}
+          </p>
+        {{/if}}
+      </section>
+    </div>
+  {{/if}}
+
+  {{#if cancelled}}
+    <section class="ets-conflict-result is-cancelled">
+      <div class="ets-conflict-result__heading">
+        <strong>{{localize "ETC.Chat.RollCancelled"}}</strong>
+      </div>
+      <span class="ets-conflict-result__note">
+        {{localize "ETC.Chat.NoMechanicalEffect"}}
+      </span>
+    </section>
+  {{else if finalSuccess}}
+    <section class="ets-conflict-result is-success is-final">
+      <div class="ets-conflict-result__heading">
+        <strong>{{localize "ETC.Chat.FinalSuccess"}}</strong>
+      </div>
+      <span class="ets-conflict-result__main">{{finalNarratorLabel}}</span>
+      {{#if narrationSeized}}
+        <span class="ets-conflict-result__note">
+          {{localize "ETC.Chat.NarrationSeizedResult" candles=narrationSeizedCandles}}
+        </span>
+      {{/if}}
+    </section>
+  {{else if finalFailure}}
+    <section class="ets-conflict-result is-failure is-final">
+      <div class="ets-conflict-result__heading">
+        <strong>{{localize "ETC.Chat.FinalFailure"}}</strong>
+      </div>
+      {{#if characterDeparture}}
+        <span class="ets-conflict-result__main">
+          {{localize "ETC.Chat.CharacterLeaves" name=resolution.actorName}}
+        </span>
+      {{else}}
+        <span class="ets-conflict-result__main">
+          {{localize "ETC.Chat.BallBegins"}}
+        </span>
+      {{/if}}
+    </section>
+  {{else if provisionalSuccess}}
+    <section class="ets-conflict-result is-provisional-success">
+      <div class="ets-conflict-result__heading">
+        <strong>{{localize "ETC.Chat.ProvisionalSuccess"}}</strong>
+      </div>
+      {{#if hasProvisionalNarrator}}
+        <span class="ets-conflict-result__main">{{provisionalNarratorLabel}}</span>
+      {{else}}
+        <span class="ets-conflict-result__note">
+          {{localize "ETC.Chat.Phase5Pending"}}
+        </span>
+      {{/if}}
+    </section>
+  {{else if provisionalFailure}}
+    <section class="ets-conflict-result is-provisional-failure">
+      <div class="ets-conflict-result__heading">
+        <strong>{{localize "ETC.Chat.ProvisionalFailure"}}</strong>
+      </div>
+      <span class="ets-conflict-result__note">
+        {{localize "ETC.Chat.ProvisionalFailurePending"}}
+      </span>
+    </section>
+  {{/if}}
+
+  {{#if canSeizeNarration}}
+    <section class="ets-narration-seize-compact" data-gm-actions>
+      <span>
+        <i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
+        {{narrationSeizeLabel}}
+      </span>
+      <button
+        type="button"
+        data-resolution-action="seize-narration"
+        title="{{localize "ETC.Chat.NarrationSeizeHelp"}}"
+      >
+        {{localize "ETC.Chat.ExtinguishCandle"}}
+      </button>
+    </section>
+  {{/if}}
+
+  {{#if hasGMActions}}
+    <section class="ets-conflict-gm-actions" data-gm-actions>
+      <button
+        type="button"
+        class="ets-conflict-validate-action"
+        data-resolution-action="validate-resolution"
+      >
+        <i class="fa-solid fa-check" aria-hidden="true"></i>
+        <span>{{localize "ETC.Chat.ValidateResolution"}}</span>
+      </button>
+
+      <button
+        type="button"
+        class="ets-conflict-cancel-action"
+        data-resolution-action="cancel-resolution"
+      >
+        <i class="fa-solid fa-ban" aria-hidden="true"></i>
+        <span>{{localize "ETC.Chat.CancelResolution"}}</span>
+      </button>
+    </section>
+  {{/if}}
+</article>

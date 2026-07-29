@@ -1,0 +1,13 @@
+<article class="ets-design2-card ets-darkness-card">
+  <header class="ets-darkness-card__header">
+    <h3 class="ets-darkness-card__title">
+      {{#if oneCandleRemaining}}
+        {{localize "ETC.Chat.OneCandleRemaining"}}
+      {{else}}
+        {{localize "ETC.Chat.CandlesRemaining" count=litCandles}}
+      {{/if}}
+    </h3>
+  </header>
+
+  <p class="ets-darkness-card__text">{{darknessText}}</p>
+</article>

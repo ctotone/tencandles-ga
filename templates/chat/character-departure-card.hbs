@@ -1,0 +1,32 @@
+<article class="ets-design2-card ets-departure-card" data-resolution-id="{{resolution.id}}">
+  <header class="ets-departure-card__header">
+    <h3 class="ets-departure-card__title">
+      {{localize "ETC.Chat.CharacterDepartureTitle" name=resolution.actorName}}
+    </h3>
+  </header>
+
+  {{#if collectiveSummary.visible}}
+    <section class="ets-collective-state-band">
+      <div>
+        <span>
+          {{localize "ETC.Collective.Candles"}}
+          <strong>{{collectiveSummary.litCandles}}</strong>
+        </span>
+        <span>
+          {{localize "ETC.Collective.PlayerPool"}}
+          <strong>{{collectiveSummary.bluePoolRemaining}}</strong>
+        </span>
+      </div>
+    </section>
+  {{/if}}
+
+  <section class="ets-departure-card__message">
+    {{#each departureParagraphs as |paragraph|}}
+      <p class="ets-departure-card__text">{{paragraph}}</p>
+    {{/each}}
+  </section>
+
+  <section class="ets-design2-result ets-departure-card__last-candle">
+    <strong>{{localize "ETC.Chat.LastCandleRemains"}}</strong>
+  </section>
+</article>

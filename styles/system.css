@@ -1,0 +1,3284 @@
+@font-face {
+  font-family: "special-elite";
+  src: url("../fonts/special-elite.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "courier-prime";
+  src: url("../fonts/courier-prime.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --etc-background: #171514;
+  --etc-panel: #24201e;
+  --etc-panel-soft: #2d2825;
+  --etc-border: #685b51;
+  --etc-text: #eee8df;
+  --etc-muted: #bcb1a5;
+  --etc-accent: #c8a96b;
+  --etc-danger: #aa5f59;
+  --etc-success: #b8a46f;
+}
+
+/* ========================================================================== */
+/* Fiche de personnage — variables de design centralisées                    */
+/* Modifier uniquement ce bloc pour tester rapidement les couleurs via F12.  */
+/* ========================================================================== */
+
+.tencandles-ga.character-sheet {
+  /* Surface générale */
+  --etc-sheet-background: #272724;
+  --etc-sheet-background-highlight: #595649;
+  --etc-sheet-panel: #534a45;
+  --etc-sheet-panel-soft: #fb6c16;
+
+  /* Texte, bordures et états généraux */
+  --etc-sheet-text: #eee8dff5;
+  --etc-sheet-muted: #cbbfb2;
+  --etc-sheet-border: #574f486e;
+  --etc-sheet-accent: #a99469;
+  --etc-sheet-danger: #c36d67;
+  --etc-sheet-success: #cfb97d;
+
+  /* Champs et contrôles */
+  --etc-sheet-input-background: rgba(0, 0, 0, 0.28);
+  --etc-sheet-focus-outline: #d9bb7f73;
+  --etc-sheet-concept-toggle-background: rgba(23, 21, 20, 0.9);
+  --etc-sheet-concept-toggle-border: rgba(104, 91, 81, 0.7);
+
+  /* Bouton principal */
+  --etc-sheet-roll-background: #022a3fcc;
+  --etc-sheet-roll-border: #574f486e;
+  --etc-sheet-roll-hover-background: #003957e6;
+  --etc-sheet-roll-hover-border: #574f486e;
+
+  /* État collectif */
+  --etc-sheet-collective-background: rgba(0, 0, 0, 0.18);
+  --etc-sheet-collective-cell-background: #2f2927d1;
+
+  /* Carte générique */
+  --etc-sheet-resource-default-background: rgba(45, 40, 37, 0.58);
+  --etc-sheet-resource-default-border: rgb(121 106 95 / 80%);
+  --etc-sheet-resource-default-accent: #d9b773;
+
+  /* Typographie de l’identité */
+  --etc-sheet-identity-font-family: "courier-prime", serif;
+  --etc-sheet-identity-title-size: 1.1rem;
+  --etc-sheet-identity-input-size: 0.9rem;
+
+  /* Typographie et largeur des contrôles de ressources */
+  --etc-sheet-resource-title-font-family: "courier-prime", serif;
+  --etc-sheet-resource-title-size: 1.1rem;
+  --etc-sheet-resource-control-font-family: "courier-prime", serif;
+  --etc-sheet-resource-control-width: 160px;
+  --etc-sheet-resource-control-letter-spacing: -1.2px;
+  --etc-sheet-instant-reset-letter-spacing: -0.5px;
+
+  /* Texte inscrit sur les cartes */
+  --etc-sheet-resource-text-color: #0a0a0a;;
+  --etc-sheet-resource-text-weight: 600;
+
+  /* Vertu */
+  --etc-sheet-virtue-background: #0d0e146b;
+    --etc-sheet-virtue-border: rgb(57 66 95 / 80%);
+    --etc-sheet-virtue-accent: #7181ab;
+    --etc-sheet-virtue-paper-image: url(../assets/actor/background-vertu.png);
+
+  /* Vice */
+    --etc-sheet-vice-background: #1e12096b;
+    --etc-sheet-vice-border: rgb(101 68 43 / 80%);
+    --etc-sheet-vice-accent: #b58559;
+    --etc-sheet-vice-paper-image: url(../assets/actor/background-vice.png);
+
+  /* Instant */
+    --etc-sheet-instant-background: #14130d6b;
+    --etc-sheet-instant-border: rgb(91 79 44 / 80%);
+    --etc-sheet-instant-accent: #c1aa68;
+    --etc-sheet-instant-paper-image: url(../assets/actor/background-moment.png);
+
+  /* Limite */
+    --etc-sheet-limit-background: #270e0e6b;
+    --etc-sheet-limit-border: rgb(133 60 58 / 80%);
+    --etc-sheet-limit-accent: #cf776f;
+    --etc-sheet-limit-paper-image: url(../assets/actor/background-brink.png);
+
+  /* État collectif */
+  --etc-sheet-collective-title-color: #c8a96b9c;
+  --etc-sheet-collective-title-size: 0.9rem;
+  --etc-sheet-collective-label-size: 0.8rem;
+  --etc-sheet-collective-number-size: 0.9rem;
+  --etc-sheet-collective-font-family: "courier-prime", serif;
+
+  /* États et relief des cartes */
+  --etc-sheet-resource-active-shadow: rgba(0, 0, 0, 0.2);
+  --etc-sheet-resource-inactive-opacity: 0.70;
+  --etc-sheet-resource-inactive-filter: saturate(0.72) brightness(0.4);
+  --etc-sheet-resource-inactive-shadow: rgb(0 0 0);
+  --etc-sheet-resource-pending-shadow: rgba(0, 0, 0, 0.18);
+  --etc-sheet-resource-failure-shadow: rgba(0, 0, 0, 0.32);
+  --etc-sheet-resource-drag-border: rgba(200, 169, 107, 0.78);
+  --etc-sheet-resource-drag-shadow: rgba(200, 169, 107, 0.25);
+  --etc-sheet-resource-action-background: rgb(0 0 0 / 48%);
+  --etc-sheet-resource-action-hover-background: rgba(255, 255, 255, 0.055);
+  --etc-sheet-resource-drag-handle: rgba(188, 177, 165, 0.65);
+  color: var(--etc-sheet-text);
+  background:
+    radial-gradient(
+      circle at top,
+      var(--etc-sheet-background-highlight) 0,
+      var(--etc-sheet-background) 55%
+    );
+}
+
+.tencandles-ga.character-sheet .window-content {
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  background-image:
+    url("../assets/actor/actor-background.webp");
+  background-size: cover;
+}
+
+.tencandles-ga.character-sheet input,
+.tencandles-ga.character-sheet textarea {
+  width: 100%;
+  border: 1px solid var(--etc-sheet-border);
+  border-radius: 4px;
+  color: var(--etc-sheet-text);
+  background: var(--etc-sheet-input-background);
+}
+
+.tencandles-ga.character-sheet input:focus,
+.tencandles-ga.character-sheet textarea:focus {
+  outline: 2px solid var(--etc-sheet-focus-outline);
+  outline-offset: 1px;
+}
+
+.tencandles-ga.character-sheet input:disabled,
+.tencandles-ga.character-sheet textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.tencandles-ga.character-sheet textarea {
+  resize: vertical;
+  min-height: 110px;
+  padding: 10px;
+  font-family: inherit;
+  line-height: 1.45;
+}
+
+.etc-sheet-content {
+  min-height: 100%;
+}
+
+.etc-sheet-header {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  align-items: start;
+  gap: 18px;
+  padding: 20px;
+}
+
+.etc-sheet-portrait-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  width: 128px;
+  min-height: 128px;
+}
+
+.etc-sheet-portrait {
+  width: 128px;
+  height: 128px;
+  border: 1px solid var(--etc-sheet-border);
+  border-radius: 6px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.etc-sheet-identity {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.etc-field {
+  display: grid;
+  gap: 5px;
+}
+
+.etc-field-label {
+  color: var(--etc-sheet-accent);
+  font-family: var(--etc-sheet-identity-font-family);
+  font-size: var(--etc-sheet-identity-title-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.etc-resource-title {
+  color: var(--etc-resource-accent);
+  font-family: var(--etc-sheet-resource-title-font-family);
+  font-size: var(--etc-sheet-resource-title-size);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.etc-field input {
+  min-height: 38px;
+  padding: 7px 10px;
+}
+
+.tencandles-ga.character-sheet .etc-name-input {
+  font-family: var(--etc-sheet-identity-font-family);
+  font-size: var(--etc-sheet-identity-input-size);
+}
+
+.etc-state-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 16px 20px 0;
+  overflow: hidden;
+  border: 1px solid var(--etc-sheet-border);
+  border-radius: 6px;
+  background: var(--etc-sheet-border);
+}
+
+.etc-state-item {
+  display: grid;
+  gap: 3px;
+  padding: 9px 10px;
+  text-align: center;
+  background: var(--etc-sheet-panel-soft);
+}
+
+.etc-state-item > span {
+  color: var(--etc-sheet-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.etc-state-value {
+  font-size: 0.86rem;
+}
+
+.etc-state-value.is-available {
+  color: var(--etc-sheet-success);
+}
+
+.etc-state-value.is-consumed {
+  color: var(--etc-sheet-danger);
+}
+
+.etc-state-value.is-inactive {
+  color: var(--etc-sheet-muted);
+}
+
+.etc-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+  padding: 12px 20px 14px;
+}
+
+.etc-resource {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--etc-sheet-border);
+  border-radius: 6px;
+  background: var(--etc-sheet-panel);
+  transition:
+    border-color 120ms ease,
+    opacity 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.etc-resource.is-consumed {
+  opacity: 0.76;
+  border-color:
+    color-mix(
+      in srgb,
+      var(--etc-sheet-danger) 55%,
+      var(--etc-sheet-border)
+    );
+}
+
+.etc-resource.is-completed,
+.etc-resource.is-unlocked {
+  border-color: var(--etc-sheet-accent);
+  box-shadow:
+    inset 0 0 0 1px
+    color-mix(
+      in srgb,
+      var(--etc-sheet-accent) 20%,
+      transparent
+    );
+}
+
+.etc-resource.is-locked {
+  border-style: dashed;
+}
+
+.etc-resource-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+  margin-bottom: 8px;
+}
+
+.etc-resource-title {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.etc-resource-heading > div {
+  min-width: 0;
+}
+
+.etc-resource-heading-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  min-width: 0;
+  margin-left: auto;
+}
+
+.etc-resource-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.etc-resource-heading p {
+  margin: 4px 0 0;
+  color: var(--etc-sheet-muted);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.etc-checkbox {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding-top: 2px;
+  color: var(--etc-sheet-muted);
+  white-space: nowrap;
+}
+
+.etc-checkbox input {
+  width: auto;
+}
+
+.etc-sheet-footer {
+  padding: 0 20px 16px;
+  color: var(--etc-sheet-muted);
+  font-size: 0.76rem;
+  text-align: right;
+}
+
+@media (max-width: 620px) {
+  .etc-sheet-header {
+    grid-template-columns: 96px 1fr;
+  }
+
+  .etc-sheet-portrait-frame {
+    width: 96px;
+    min-height: 96px;
+  }
+
+  .etc-sheet-portrait {
+    width: 96px;
+    height: 96px;
+  }
+
+  .etc-state-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .etc-resource-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* État collectif affiché sur la fiche                                       */
+/* ------------------------------------------------------------------------- */
+
+.etc-collective-summary {
+  margin: 8px 20px 18px;
+  padding: 12px;
+  border: 1px solid var(--etc-sheet-border);
+  border-radius: 6px;
+  background: var(--etc-sheet-collective-background);
+}
+
+.etc-collective-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.etc-collective-title {
+  margin: 0;
+  color: var(--etc-sheet-collective-title-color);
+  font-family: var(--etc-sheet-collective-font-family);
+  font-size: var(--etc-sheet-collective-title-size);
+}
+
+.etc-collective-heading p {
+  margin: 3px 0 0;
+  color: var(--etc-sheet-muted);
+  font-size: 0.78rem;
+}
+
+.etc-open-state-control {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 1px solid var(--etc-border);
+  color: var(--etc-text);
+  background: var(--etc-panel-soft);
+}
+
+.etc-collective-values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.etc-collective-value {
+  display: grid;
+  gap: 3px;
+  padding: 7px;
+  border-radius: 4px;
+  text-align: center;
+  background: var(--etc-sheet-collective-cell-background);
+}
+
+.etc-collective-label {
+  color: var(--etc-sheet-muted);
+  font-family: var(--etc-sheet-collective-font-family);
+  font-size: var(--etc-sheet-collective-label-size);
+  text-transform: uppercase;
+}
+
+.etc-collective-number {
+  color: var(--etc-sheet-accent);
+  font-family: var(--etc-sheet-collective-font-family);
+  font-size: var(--etc-sheet-collective-number-size);
+}
+
+/* ------------------------------------------------------------------------- */
+/* Interface MJ de test de l'état collectif                                  */
+/* ------------------------------------------------------------------------- */
+
+.tencandles-ga.etc-state-control {
+  color: var(--etc-text);
+  background:
+    radial-gradient(circle at top, #302923 0, var(--etc-background) 65%);
+}
+
+.tencandles-ga.etc-state-control .window-content {
+  padding: 0;
+  background: transparent;
+}
+
+.etc-state-control-content {
+  padding: 16px;
+}
+
+.etc-state-control-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--etc-border);
+}
+
+.etc-state-control-header h2 {
+  margin: 0;
+  color: var(--etc-accent);
+  font-size: 1.1rem;
+}
+
+.etc-state-control-header p {
+  margin: 4px 0 0;
+  color: var(--etc-muted);
+  line-height: 1.35;
+}
+
+.etc-authority-warning {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border: 1px solid var(--etc-danger);
+  border-radius: 999px;
+  color: var(--etc-danger);
+  font-size: 0.78rem;
+}
+
+.etc-state-control-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.etc-counter-card {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 118px;
+  padding: 12px;
+  border: 1px solid var(--etc-border);
+  border-radius: 6px;
+  text-align: center;
+  background: var(--etc-panel);
+}
+
+.etc-counter-card > span {
+  color: var(--etc-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.etc-counter-card small {
+  color: var(--etc-muted);
+}
+
+.etc-counter {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  align-items: center;
+  gap: 6px;
+}
+
+.etc-counter button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+
+.etc-counter strong,
+.etc-readonly-value {
+  color: var(--etc-accent);
+  font-size: 1.55rem;
+}
+
+.etc-restore-button {
+  padding: 4px 6px;
+  font-size: 0.75rem;
+}
+
+.etc-state-control-content button,
+.etc-state-control-content select {
+  border: 1px solid var(--etc-border);
+  border-radius: 4px;
+  color: var(--etc-text);
+  background: var(--etc-panel-soft);
+}
+
+.etc-state-control-content button:disabled,
+.etc-state-control-content select:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.etc-state-control-details {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--etc-border);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.etc-state-control-details label {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.etc-state-control-details select {
+  min-height: 32px;
+  padding: 4px 7px;
+}
+
+.etc-state-readonly-field {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.etc-state-readonly-field strong {
+  min-height: 32px;
+  padding: 6px 8px;
+  border: 1px solid var(--etc-border);
+  border-radius: 4px;
+  color: var(--etc-accent);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.etc-presentation-control {
+  display: grid;
+  gap: 7px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--etc-border);
+}
+
+.etc-presentation-control p {
+  margin: 0 0 0 150px;
+  color: var(--etc-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.etc-state-control-details dl {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.etc-state-control-details dl > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.etc-state-control-details dt {
+  color: var(--etc-muted);
+}
+
+.etc-state-control-details dd {
+  margin: 0;
+  color: var(--etc-text);
+}
+
+.etc-state-control-content footer {
+  margin-top: 12px;
+  color: var(--etc-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 620px) {
+  .etc-collective-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .etc-state-control-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .etc-presentation-control p {
+    margin-left: 0;
+  }}
+
+
+/* ------------------------------------------------------------------------- */
+/* Phase 4 — Premier cycle candle-roll                                       */
+/* ------------------------------------------------------------------------- */
+
+.etc-collective-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 7px;
+}
+
+.ets-sheet-roll,
+.etc-open-state-control {
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 1px solid var(--etc-border);
+  border-radius: 4px;
+  color: var(--etc-text);
+  background: var(--etc-panel-soft);
+}
+
+.ets-sheet-roll:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ets-floating-roll {
+  position: fixed;
+  z-index: 80;
+  left: 49%;
+  bottom: 8.25rem;
+  display: inline-flex;
+  min-width: 14.5rem;
+  min-height: 3.65rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1rem;
+  transform: translateX(-50%);
+  border: 1px solid rgba(215, 220, 230, 0.34);
+  border-radius: 7px;
+  background: rgba(12, 14, 20, 0.94);
+  color: #f2f3f5a6;
+  font-family: "courier-prime", monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow:
+    0 0 19px 1px rgb(95 95 95 / 39%),
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    inset 0 -1px 0 rgb(0 0 0 / 40%);
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    background 120ms ease,
+    box-shadow 120ms ease,
+    opacity 120ms ease;
+}
+
+.ets-floating-roll i,
+.ets-floating-roll span {
+  color: inherit;
+  pointer-events: none;
+}
+
+.ets-floating-roll:hover:not(:disabled) {
+  transform: translate(-50%, -1px);
+  border-color: rgba(245, 245, 250, 0.62);
+  background: rgba(25, 29, 40, 0.97);
+  box-shadow:
+    0 0.5rem 1rem rgb(0 0 0 / 80%),
+    inset 0 1px 0 rgb(255 255 255 / 16%),
+    inset 0 -1px 0 rgb(0 0 0 / 34%);
+}
+
+.ets-floating-roll:active:not(:disabled) {
+  transform: translate(-50%, 1px);
+  box-shadow:
+    0 0.12rem 0.3rem rgb(0 0 0 / 70%),
+    inset 0 1px 0 rgb(0 0 0 / 38%),
+    inset 0 -1px 0 rgb(255 255 255 / 7%);
+}
+
+.ets-floating-roll:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+  filter: saturate(0.55);
+}
+
+.ets-floating-roll--busy i {
+  animation: ets-roll-spin 900ms linear infinite;
+}
+
+@keyframes ets-roll-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .ets-floating-roll {
+    bottom: 5rem;
+    min-width: 9.5rem;
+    padding-inline: 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+.ets-dialog label {
+  display: grid;
+  gap: 8px;
+}
+
+.ets-dialog select {
+  min-height: 34px;
+}
+
+
+.ets-legacy-canvas-dialog {
+  display: grid;
+  gap: 10px;
+}
+
+.ets-legacy-canvas-dialog p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.ets-resolution-card {
+  display: grid;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid #66564b;
+  border-radius: 5px;
+  color: #eee8df;
+  background:
+    radial-gradient(circle at top, #332a25 0, #191615 70%);
+}
+
+.ets-resolution-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #66564b;
+}
+
+.ets-resolution-card__header h3 {
+  margin: 0;
+  color: #c8a96b;
+  font-size: 1rem;
+}
+
+.ets-resolution-card__header p {
+  margin: 2px 0 0;
+  color: #c9beb2;
+}
+
+
+.ets-collective-state-band {
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid rgba(200, 169, 107, 0.38);
+  border-radius: 4px;
+  background: rgba(200, 169, 107, 0.065);
+}
+
+.ets-collective-state-band__label {
+  color: #d8bd70;
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ets-collective-state-band > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.ets-collective-state-band > div > span {
+  display: grid;
+  gap: 2px;
+  padding: 5px;
+  border-radius: 4px;
+  color: #bcb1a5;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.ets-collective-state-band strong {
+  color: #eee8df;
+  font-size: 0.92rem;
+}
+
+.ets-resolution-status {
+  flex: 0 0 auto;
+  padding: 3px 7px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.72rem;
+}
+
+.ets-resolution-status.is-waiting {
+  color: #d2b778;
+}
+
+.ets-resolution-status.is-cancelled {
+  color: #b8817b;
+}
+
+.ets-resolution-pool {
+  display: grid;
+  gap: 7px;
+}
+
+.ets-resolution-pool__heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ets-resolution-pool__heading span {
+  color: #bcb1a5;
+  font-size: 0.78rem;
+}
+
+.ets-dice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ets-die {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid #6f8798;
+  border-radius: 4px;
+  color: #171514;
+  background: #a8c6db;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.ets-die.is-success {
+  border-color: #d8bd70;
+  background: #e4ca7c;
+}
+
+.ets-die.is-danger {
+  border-color: #9f554f;
+  color: #f5ece9;
+  background: #873e39;
+}
+
+.ets-die.is-neutral {
+  opacity: 0.88;
+}
+
+.ets-resolution-analysis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.ets-resolution-analysis > div {
+  display: grid;
+  gap: 2px;
+  padding: 6px;
+  border-radius: 4px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.ets-resolution-analysis span {
+  color: #bcb1a5;
+  font-size: 0.68rem;
+}
+
+.ets-resolution-analysis strong {
+  color: #eee8df;
+}
+
+.ets-resolution-result {
+  display: grid;
+  gap: 3px;
+  padding: 8px 9px;
+  border-left: 3px solid currentColor;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.ets-resolution-result span {
+  color: #c9beb2;
+  font-size: 0.76rem;
+}
+
+.ets-resolution-result.is-success {
+  color: #c8a96b;
+}
+
+.ets-resolution-result.is-failure,
+.ets-resolution-result.is-cancelled {
+  color: #b66a63;
+}
+
+.ets-resolution-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ets-resolution-actions button,
+.etc-cancel-resolution {
+  padding: 5px 8px;
+  border: 1px solid #93534d;
+  border-radius: 4px;
+  color: #f0e6e3;
+  background: rgba(123, 54, 49, 0.6);
+}
+
+.ets-resolution-card footer {
+  color: #a99e93;
+  font-size: 0.69rem;
+  line-height: 1.35;
+}
+
+.etc-state-resolution-row dd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.etc-cancel-resolution {
+  font-size: 0.72rem;
+}
+
+@media (max-width: 620px) {
+  .etc-collective-heading {
+    display: grid;
+  }
+
+  .etc-collective-actions {
+    flex-wrap: wrap;
+  }
+
+  .ets-resolution-analysis {
+    grid-template-columns: 1fr;
+  }
+
+  .ets-collective-state-band > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* Phase 5 — Jet MJ, Espoir et relances                                      */
+/* ------------------------------------------------------------------------- */
+
+.ets-resolution-pool--hope,
+.ets-resolution-pool--gm {
+  padding-top: 8px;
+  border-top: 1px solid rgba(102, 86, 75, 0.7);
+}
+
+.ets-resolution-pending {
+  margin: 0;
+  color: #bcb1a5;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.ets-die--red {
+  border-color: #9e5a53;
+  color: #f4ecea;
+  background: #7d3732;
+}
+
+.ets-die--red.is-success {
+  border-color: #d8bd70;
+  color: #171514;
+  background: #e4ca7c;
+}
+
+.ets-die--hope {
+  border-color: #8f7caa;
+  color: #f4eff8;
+  background: #5f4f72;
+}
+
+.ets-die--hope.is-hope-success {
+  border-color: #e0ca83;
+  color: #171514;
+  background: #ead58f;
+}
+
+.ets-resolution-analysis {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ets-resolution-history {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 7px;
+  border: 1px solid #857267;
+  border-radius: 999px;
+  color: #cfc3b8;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.7rem;
+}
+
+.ets-resolution-actions {
+  display: grid;
+  gap: 6px;
+  justify-content: stretch;
+  padding-top: 8px;
+  border-top: 1px solid rgba(102, 86, 75, 0.7);
+}
+
+.ets-resolution-actions__label {
+  color: #bcb1a5;
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ets-resolution-actions > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.ets-resolution-actions button {
+  padding: 5px 8px;
+  border: 1px solid #76645a;
+  border-radius: 4px;
+  color: #f0e8df;
+  background: rgba(79, 65, 58, 0.78);
+}
+
+.ets-resolution-actions button:hover:not(:disabled) {
+  border-color: #c8a96b;
+}
+
+.ets-resolution-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.46;
+}
+
+.ets-resource-action.is-vice {
+  border-color: #8e5952;
+}
+
+.ets-resource-action.is-virtue {
+  border-color: #75856f;
+}
+
+.ets-resource-action.is-limit {
+  border-color: #a58a58;
+}
+
+.ets-gm-roll-action {
+  border-color: #9e5a53 !important;
+  background: rgba(108, 47, 43, 0.72) !important;
+}
+
+.ets-cancel-action {
+  border-color: #93534d !important;
+  background: rgba(123, 54, 49, 0.6) !important;
+}
+
+@media (max-width: 620px) {
+  .ets-resolution-analysis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+.etc-roll-gm {
+  padding: 5px 8px;
+  border: 1px solid #9e5a53;
+  border-radius: 4px;
+  color: #f0e6e3;
+  background: rgba(108, 47, 43, 0.72);
+  font-size: 0.72rem;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* Phase 6 — Validation, Bal des vérités et nouvelle scène                   */
+/* ------------------------------------------------------------------------- */
+
+.ets-resolution-status.is-resolved {
+  color: #b8a46f;
+}
+
+.ets-resolution-card.is-resolved {
+  border-color: #806f57;
+}
+
+.ets-resolution-result.is-final {
+  gap: 5px;
+}
+
+.ets-resolution-result.is-final small {
+  color: #bcb1a5;
+  line-height: 1.35;
+}
+
+.ets-validate-action,
+.etc-validate-resolution,
+.ets-next-scene-action {
+  border-color: #95825c !important;
+  color: #f5eddc !important;
+  background: rgba(112, 91, 48, 0.76) !important;
+}
+
+.ets-transition-card {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #66564b;
+  border-radius: 5px;
+  color: #eee8df;
+  background:
+    radial-gradient(circle at top, #332a25 0, #191615 72%);
+}
+
+.ets-transition-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #66564b;
+}
+
+.ets-transition-card__header h3 {
+  margin: 0;
+  color: #c8a96b;
+  font-size: 1rem;
+}
+
+.ets-transition-card__header p,
+.ets-transition-card > p {
+  margin: 3px 0 0;
+  color: #c9beb2;
+  line-height: 1.4;
+}
+
+.ets-transition-card__header > i {
+  color: #c8a96b;
+  font-size: 1.15rem;
+}
+
+.ets-truth-counter {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 9px;
+  border-left: 3px solid #c8a96b;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ets-truth-counter strong {
+  color: #e4ca7c;
+  font-size: 1.55rem;
+}
+
+.ets-truth-counter span {
+  color: #eee8df;
+}
+
+.ets-transition-result {
+  display: grid;
+  gap: 4px;
+  padding: 9px;
+  border: 1px solid rgba(200, 169, 107, 0.6);
+  border-radius: 4px;
+  background: rgba(200, 169, 107, 0.08);
+}
+
+.ets-transition-result strong {
+  color: #d8bd70;
+}
+
+.ets-transition-result span {
+  color: #c9beb2;
+  line-height: 1.35;
+}
+
+.ets-ball-card.is-completed {
+  border-color: #806f57;
+}
+
+.ets-departure-card {
+  border-color: #8d554f;
+}
+
+.ets-departure-card .ets-transition-card__header h3,
+.ets-departure-card .ets-transition-card__header > i {
+  color: #c9827a;
+}
+
+.ets-darkness-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.ets-darkness-values > div {
+  display: grid;
+  gap: 3px;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.ets-darkness-values span {
+  color: #bcb1a5;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.ets-darkness-values strong {
+  color: #e4ca7c;
+  font-size: 1.05rem;
+}
+
+.etc-ball-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #806f57;
+  border-radius: 5px;
+  background: rgba(200, 169, 107, 0.08);
+}
+
+.etc-ball-control > div {
+  display: grid;
+  gap: 3px;
+}
+
+.etc-ball-control strong {
+  color: var(--etc-accent);
+}
+
+.etc-ball-control span {
+  color: var(--etc-muted);
+  font-size: 0.78rem;
+}
+
+.etc-ball-control button {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+}
+
+.etc-validate-resolution {
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 620px) {
+  .ets-darkness-values {
+    grid-template-columns: 1fr;
+  }
+
+  .etc-ball-control {
+    display: grid;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+/* Phase 7 — Canevas officiel                                                */
+/* ------------------------------------------------------------------------- */
+
+.etc-canvas-control {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--etc-border);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.etc-canvas-control > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.etc-canvas-control h3 {
+  margin: 0;
+  color: var(--etc-accent);
+  font-size: 1rem;
+}
+
+.etc-canvas-control header p {
+  margin: 3px 0 0;
+  color: var(--etc-muted);
+  font-size: 0.78rem;
+}
+
+.etc-canvas-status {
+  flex: 0 0 auto;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.etc-canvas-status.is-ready {
+  color: var(--etc-success);
+}
+
+.etc-canvas-status.is-missing {
+  color: var(--etc-danger);
+}
+
+.etc-canvas-control dl {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.etc-canvas-control dl > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.42fr) 1fr;
+  gap: 8px;
+}
+
+.etc-canvas-control dt {
+  color: var(--etc-muted);
+}
+
+.etc-canvas-control dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.etc-canvas-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.etc-canvas-actions button {
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 1px solid var(--etc-border);
+  border-radius: 4px;
+  color: var(--etc-text);
+  background: var(--etc-panel-soft);
+}
+
+.etc-canvas-actions button:hover:not(:disabled) {
+  border-color: var(--etc-accent);
+}
+
+.etc-canvas-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Accès MJ depuis le répertoire des Actors                                   */
+/* -------------------------------------------------------------------------- */
+
+.ets-actor-directory-gm-access {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.5rem 0.35rem;
+}
+
+.ets-actor-directory-gm-access__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2rem;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--etc-accent) 68%, var(--etc-border));
+  border-radius: 4px;
+  color: var(--etc-text);
+  background:
+    linear-gradient(90deg, rgba(64, 12, 10, 0.96), rgba(122, 28, 22, 0.9));
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  font-family: "courier-prime", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ets-actor-directory-gm-access__button:hover,
+.ets-actor-directory-gm-access__button:focus-visible {
+  border-color: var(--etc-accent);
+  background:
+    linear-gradient(90deg, rgba(82, 16, 13, 0.98), rgba(148, 38, 28, 0.94));
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.4),
+    0 0 8px rgba(200, 169, 107, 0.12);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 9 — Gestion de partie, ressources MJ et reprise de narration         */
+/* -------------------------------------------------------------------------- */
+
+.tencandles-ga.etc-state-control .window-content {
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+.etc-narration-seize-control,
+.etc-actor-management,
+.etc-new-game-control {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--etc-border);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.etc-narration-seize-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+  border-color: rgba(200, 169, 107, 0.72);
+  background: rgba(200, 169, 107, 0.08);
+}
+
+.etc-narration-seize-control > div {
+  display: grid;
+  gap: 3px;
+}
+
+.etc-narration-seize-control strong,
+.etc-actor-management h3,
+.etc-new-game-control h3 {
+  color: var(--etc-accent);
+}
+
+.etc-narration-seize-control span,
+.etc-actor-management header p,
+.etc-new-game-control header p {
+  color: var(--etc-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.etc-narration-seize-control button {
+  flex: 0 0 46%;
+  min-height: 34px;
+  padding: 6px 9px;
+  border-color: #95825c;
+  color: #f5eddc;
+  background: rgba(112, 91, 48, 0.76);
+}
+
+.etc-actor-management > header,
+.etc-new-game-control > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.etc-actor-management h3,
+.etc-new-game-control h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.etc-actor-management header p,
+.etc-new-game-control header p {
+  margin: 3px 0 0;
+}
+
+.etc-actor-management__selector,
+.etc-actor-management__grid label {
+  display: grid;
+  gap: 5px;
+}
+
+.etc-actor-management__selector > span,
+.etc-actor-management__grid label > span {
+  color: var(--etc-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.etc-actor-management select {
+  min-height: 32px;
+  padding: 4px 7px;
+}
+
+.etc-actor-management__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.etc-actor-management__warning,
+.etc-actor-management__empty {
+  margin: 0;
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--etc-muted);
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.etc-actor-management__warning {
+  border-left: 3px solid var(--etc-danger);
+  color: #d5b2ae;
+}
+
+.etc-actor-management__save {
+  justify-self: end;
+  min-height: 32px;
+  padding: 5px 10px;
+}
+
+.etc-new-game-control {
+  border-color: rgba(151, 70, 62, 0.82);
+  background: rgba(94, 34, 30, 0.14);
+}
+
+.etc-new-game-control dl {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.etc-new-game-control dl > div {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.42fr) 1fr;
+  gap: 8px;
+}
+
+.etc-new-game-control dt {
+  color: var(--etc-muted);
+}
+
+.etc-new-game-control dd {
+  margin: 0;
+}
+
+.etc-new-game-control__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  justify-self: end;
+  min-height: 34px;
+  padding: 6px 11px;
+  cursor: pointer;
+  border-color: #a25149 !important;
+  color: #f4e7e5 !important;
+  background: rgba(123, 54, 49, 0.82) !important;
+}
+
+.etc-new-game-control__button > * {
+  pointer-events: none;
+}
+
+.etc-new-game-confirmation ul {
+  margin: 0.6rem 0 0.8rem 1.2rem;
+}
+
+.ets-narration-seize-compact {
+  display: grid;
+  align-items: stretch;
+  gap: 8px;
+  padding: 6px 8px;
+  border-top: 1px solid rgba(102, 86, 75, 0.7);
+  color: #c9beb2;
+  font-size: 0.72rem;
+}
+
+.ets-narration-seize-compact > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  text-align: center;
+}
+
+.ets-narration-seize-compact > span i {
+  color: #c8a96b;
+}
+
+.ets-narration-seize-compact button {
+  width: 100%;
+  padding: 4px 7px;
+  border: 1px solid #95825c;
+  border-radius: 4px;
+  color: #f5eddc;
+  background: rgba(112, 91, 48, 0.68);
+  font-size: 0.7rem;
+}
+
+.ets-transition-result.is-interrupted {
+  border-color: rgba(147, 83, 77, 0.75);
+  background: rgba(123, 54, 49, 0.12);
+}
+
+.ets-transition-result.is-interrupted strong {
+  color: #c9827a;
+}
+
+@media (max-width: 620px) {
+  .etc-narration-seize-control {
+    display: grid;
+  }
+
+  .etc-narration-seize-control button {
+    width: 100%;
+  }
+
+  .etc-actor-management__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ets-narration-seize-compact {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+.dialog .etc-new-game-confirm__create,
+.application.dialog .etc-new-game-confirm__create,
+.ets-dialog .etc-new-game-confirm__create {
+  border-color: #a25149 !important;
+  color: #f4e7e5 !important;
+  background: rgba(123, 54, 49, 0.9) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 9 bis — Instant, cartes de personnage et régie compacte              */
+/* -------------------------------------------------------------------------- */
+
+.etc-field--concept {
+  position: relative;
+}
+
+.tencandles-ga.character-sheet .etc-concept-input {
+  min-height: 0;
+  overflow: hidden;
+  resize: none;
+  padding: 8px 34px 8px 10px;
+  font-family: var(--etc-sheet-identity-font-family);
+  font-size: var(--etc-sheet-identity-input-size);
+  line-height: 1.4;
+}
+
+.tencandles-ga.character-sheet
+.etc-concept-input::placeholder {
+  color: var(--etc-sheet-text);
+  opacity: 1;
+}
+
+.etc-concept-toggle {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid var(--etc-sheet-concept-toggle-border);
+  border-radius: 4px;
+  color: var(--etc-sheet-muted);
+  background: var(--etc-sheet-concept-toggle-background);
+}
+
+.etc-sheet-roll-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: calc(100% - 40px);
+  min-height: 66px;
+  margin: 0 20px;
+  border: 1px solid var(--etc-sheet-roll-border);
+  border-radius: 6px;
+  color: var(--etc-sheet-text);
+  background: var(--etc-sheet-roll-background);
+  font-family: "special-elite", serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+.etc-sheet-roll-primary:hover:not(:disabled) {
+  border-color: var(--etc-sheet-roll-hover-border);
+  background: var(--etc-sheet-roll-hover-background);
+}
+
+.etc-collective-summary {
+  padding: 0;
+}
+
+.etc-collective-summary > summary {
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  padding: 11px 12px;
+}
+
+.etc-collective-summary > summary::-webkit-details-marker {
+  display: none;
+}
+
+.etc-collective-chevron {
+  align-self: center;
+  color: var(--etc-sheet-muted);
+  transition: transform 120ms ease;
+}
+
+.etc-collective-summary[open] .etc-collective-chevron {
+  transform: rotate(180deg);
+}
+
+.etc-collective-summary .etc-collective-values {
+  padding: 0 12px 12px;
+}
+
+.etc-resource {
+  --etc-resource-bg: var(--etc-sheet-resource-default-background);
+  --etc-resource-border: var(--etc-sheet-resource-default-border);
+  --etc-resource-accent: var(--etc-sheet-resource-default-accent);
+  --etc-resource-paper-image: none;
+  display: flex;
+  flex-direction: column;
+  background: var(--etc-resource-bg);
+  border-color: var(--etc-resource-border);
+  transition:
+    opacity 140ms ease,
+    filter 140ms ease,
+    transform 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.etc-resource--vice {
+  --etc-resource-bg: var(--etc-sheet-vice-background);
+  --etc-resource-border: var(--etc-sheet-vice-border);
+  --etc-resource-accent: var(--etc-sheet-vice-accent);
+  --etc-resource-paper-image: var(--etc-sheet-vice-paper-image);
+}
+
+.etc-resource--virtue {
+  --etc-resource-bg: var(--etc-sheet-virtue-background);
+  --etc-resource-border: var(--etc-sheet-virtue-border);
+  --etc-resource-accent: var(--etc-sheet-virtue-accent);
+  --etc-resource-paper-image: var(--etc-sheet-virtue-paper-image);
+}
+
+.etc-resource--moment {
+  --etc-resource-bg: var(--etc-sheet-instant-background);
+  --etc-resource-border: var(--etc-sheet-instant-border);
+  --etc-resource-accent: var(--etc-sheet-instant-accent);
+  --etc-resource-paper-image: var(--etc-sheet-instant-paper-image);
+}
+
+.etc-resource--brink {
+  --etc-resource-bg: var(--etc-sheet-limit-background);
+  --etc-resource-border: var(--etc-sheet-limit-border);
+  --etc-resource-accent: var(--etc-sheet-limit-accent);
+  --etc-resource-paper-image: var(--etc-sheet-limit-paper-image);
+}
+
+.etc-resource.is-available,
+.etc-resource.is-success,
+.etc-resource.is-unlocked {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow:
+    0 3px 7px var(--etc-sheet-resource-active-shadow),
+    inset 0 0 0 1px
+    color-mix(
+      in srgb,
+      var(--etc-resource-accent) 10%,
+      transparent
+    );
+}
+
+.etc-resource.is-consumed,
+.etc-resource.is-idle,
+.etc-resource.is-locked {
+  opacity: var(--etc-sheet-resource-inactive-opacity);
+  filter: var(--etc-sheet-resource-inactive-filter);
+  transform: none;
+  box-shadow:
+    inset 0 2px 9px var(--etc-sheet-resource-inactive-shadow);
+}
+
+.etc-resource.is-pending {
+  opacity: 0.72;
+  filter: saturate(0.82) brightness(0.9);
+  box-shadow: inset 0 2px 8px var(--etc-sheet-resource-pending-shadow);
+}
+
+.etc-resource.is-failure {
+  opacity: 0.46;
+  filter: grayscale(0.24) saturate(0.5) brightness(0.72);
+  box-shadow: inset 0 3px 12px var(--etc-sheet-resource-failure-shadow);
+}
+
+.etc-resource.is-dragging {
+  opacity: 0.35;
+}
+
+.etc-resource.is-drag-target {
+  border-color: var(--etc-sheet-resource-drag-border);
+  box-shadow:
+    inset 0 0 0 1px var(--etc-sheet-resource-drag-shadow);
+}
+
+.etc-resource-drag-handle {
+  flex: 0 0 auto;
+  padding: 3px 5px;
+  color: var(--etc-sheet-resource-drag-handle);
+  cursor: grab;
+}
+
+.etc-resource-drag-handle:active {
+  cursor: grabbing;
+}
+
+.tencandles-ga.character-sheet .etc-resource-text {
+  height: 116px;
+  min-height: 116px;
+  resize: none;
+  align-content: center;
+  overflow: auto;
+  color: var(--etc-sheet-resource-text-color);
+  background-image: var(--etc-resource-paper-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "special-elite", serif;
+  font-size: var(--etc-resource-text-size, 20px);
+  font-weight: var(--etc-sheet-resource-text-weight);
+  line-height: 1.25;
+  text-align: center;
+}
+
+.etc-resource-state-action {
+  flex: 0 0 var(--etc-sheet-resource-control-width);
+  width: var(--etc-sheet-resource-control-width);
+  min-width: var(--etc-sheet-resource-control-width);
+  max-width: var(--etc-sheet-resource-control-width);
+  min-height: 29px;
+  margin: 0;
+  padding: 3px 8px;
+  overflow: hidden;
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--etc-resource-accent) 42%,
+      var(--etc-sheet-border)
+    );
+  border-radius: 4px;
+  color:
+    color-mix(
+      in srgb,
+      var(--etc-resource-accent) 76%,
+      var(--etc-sheet-text)
+    );
+  background: var(--etc-sheet-resource-action-background);
+  font-family: var(--etc-sheet-resource-control-font-family);
+  font-size: 0.75rem;
+  letter-spacing: var(--etc-sheet-resource-control-letter-spacing);
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.etc-resource-state-action[data-resource-action="reset-instant"] {
+  letter-spacing: var(--etc-sheet-instant-reset-letter-spacing);
+}
+
+.etc-resource-state-action:hover:not(:disabled) {
+  background: var(--etc-sheet-resource-action-hover-background);
+}
+
+.etc-resource-state-action:disabled {
+  cursor: default;
+}
+
+.etc-resource-state-indicator {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 var(--etc-sheet-resource-control-width);
+  width: var(--etc-sheet-resource-control-width);
+  min-width: var(--etc-sheet-resource-control-width);
+  max-width: var(--etc-sheet-resource-control-width);
+  min-height: 29px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 3px 8px;
+  overflow: hidden;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--etc-resource-accent) 42%,
+    var(--etc-sheet-border)
+  );
+  border-radius: 4px;
+  color: color-mix(
+    in srgb,
+    var(--etc-resource-accent) 76%,
+    var(--etc-sheet-text)
+  );
+  background: var(--etc-sheet-resource-action-background);
+  font-size: 0.75rem;
+  line-height: 1.1;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.etc-resource-confirmation {
+  max-width: 420px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.etc-resource-confirmation__warning {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--etc-accent);
+  color: #d8cdbf;
+  background: rgba(200, 169, 107, 0.08);
+}
+
+.etc-resource-confirmation__warning > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.etc-resource-confirmation__warning span {
+  display: block;
+  line-height: 1.35;
+}
+
+/* Carte publique de résolution de l’Instant. */
+.etc-instant-chat-card {
+  border-color: rgba(153, 130, 73, 0.72);
+  background:
+    radial-gradient(circle at top, #332d20 0, #181614 72%);
+}
+
+.etc-instant-chat-card .ets-resolution-card__header {
+  border-bottom-color: rgba(153, 130, 73, 0.62);
+}
+
+.etc-instant-chat-card .ets-resolution-card__header > i,
+.etc-instant-chat-eyebrow {
+  color: #c8a96b;
+}
+
+.etc-instant-chat-eyebrow {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.etc-instant-chat-card > p {
+  margin: 0;
+  color: #c9beb2;
+  line-height: 1.4;
+}
+
+.etc-instant-chat-text {
+  margin: 0;
+  padding: 9px 10px;
+  border-left: 3px solid rgba(200, 169, 107, 0.65);
+  color: #eee8df;
+  background: rgba(255, 255, 255, 0.045);
+  font-family: "special-elite", serif;
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.etc-instant-chat-card.is-suspended {
+  opacity: 0.78;
+}
+
+.etc-instant-chat-card.is-success {
+  border-color: rgba(174, 156, 94, 0.82);
+}
+
+.etc-instant-chat-card.is-failure,
+.etc-instant-chat-card.is-cancelled {
+  opacity: 0.72;
+  filter: saturate(0.68);
+}
+
+.etc-instant-chat-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 1px;
+}
+
+.etc-instant-chat-actions button {
+  min-height: 32px;
+  border: 1px solid #786b50;
+  border-radius: 4px;
+  color: #eee8df;
+  background: rgba(79, 67, 43, 0.62);
+}
+
+.etc-instant-chat-actions button[data-instant-action="failure"] {
+  border-color: #86534e;
+  background: rgba(100, 52, 48, 0.62);
+}
+
+.etc-instant-chat-actions button:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.etc-instant-chat-actions.is-readonly button,
+.etc-instant-chat-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.etc-instant-chat-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 7px 8px;
+  border-radius: 4px;
+  color: #c8bdaf;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.78rem;
+}
+
+.etc-instant-chat-status.is-success {
+  color: #d6c783;
+  background: rgba(174, 156, 94, 0.08);
+}
+
+.etc-instant-chat-status.is-failure {
+  color: #c1aaa4;
+  background: rgba(134, 83, 78, 0.08);
+}
+
+/* Régie MJ large, organisée sur deux colonnes. */
+.tencandles-ga.etc-state-control .window-content {
+  max-height: none;
+  overflow: hidden;
+}
+
+.etc-state-control-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+.etc-state-control-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: 12px;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.etc-state-control-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.etc-state-control-layout .etc-state-control-grid,
+.etc-state-control-layout .etc-state-control-details,
+.etc-state-control-layout .etc-actor-management,
+.etc-state-control-layout .etc-canvas-control,
+.etc-state-control-layout .etc-new-game-control {
+  margin-top: 0;
+}
+
+.etc-state-control-layout .etc-state-control-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.etc-state-control-layout .etc-counter-card {
+  padding: 9px;
+}
+
+.etc-state-control-layout .etc-state-control-details,
+.etc-state-control-layout .etc-actor-management,
+.etc-state-control-layout .etc-canvas-control,
+.etc-state-control-layout .etc-new-game-control {
+  padding: 10px;
+}
+
+.etc-state-control-layout .etc-state-control-details {
+  flex: 1 1 auto;
+}
+
+.etc-state-control-layout .etc-actor-management__grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.etc-state-control-layout .etc-actor-management__instant {
+  grid-column: 1 / -1;
+}
+
+.etc-state-control-layout .etc-canvas-control dl,
+.etc-state-control-layout .etc-new-game-control dl {
+  font-size: 0.78rem;
+}
+
+.etc-state-control-layout .etc-canvas-actions {
+  gap: 6px;
+}
+
+.etc-state-control-layout .etc-canvas-actions button {
+  padding-inline: 6px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .tencandles-ga.etc-state-control .window-content {
+    overflow-y: auto;
+  }
+
+  .etc-state-control-content {
+    height: auto;
+    overflow: visible;
+  }
+
+  .etc-state-control-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.etc-state-control-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.etc-state-control-content > footer {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+.etc-instant-chat-text {
+  margin: 8px 0;
+  padding: 7px 9px;
+  border-left: 2px solid rgba(194, 174, 114, 0.55);
+  color: #d6cdbf;
+  background: rgba(0, 0, 0, 0.12);
+  font-family: "special-elite", serif;
+  font-style: normal;
+}
+
+.etc-instant-chat-actions.is-readonly {
+  opacity: 0.58;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 10A — Carte de conflit issue du langage graphique du module validé   */
+/* -------------------------------------------------------------------------- */
+
+.chat-message .ets-conflict-card,
+.chat-message .ets-conflict-card p,
+.chat-message .ets-conflict-card span,
+.chat-message .ets-conflict-card strong,
+.chat-message .ets-conflict-card button {
+  font-family: "courier-prime", monospace !important;
+}
+
+.chat-message .ets-conflict-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  color: #f2f3f5;
+  background: rgba(10, 12, 18, 0.94);
+}
+
+.chat-message .ets-conflict-card.is-cancelled {
+  opacity: 0.68;
+  filter: saturate(0.65);
+}
+
+.chat-message .ets-conflict-card h3,
+.chat-message .ets-conflict-card p,
+.chat-message .ets-conflict-card strong,
+.chat-message .ets-conflict-card span,
+.chat-message .ets-conflict-card i {
+  color: inherit;
+}
+
+.ets-conflict-card__header {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0;
+}
+
+.chat-message .ets-conflict-card__header h3 {
+  margin: 0;
+  color: #f2f3f5;
+  font-family: "special-elite", serif !important;
+  font-size: 2.3rem;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ets-conflict-card__status-slot {
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-self: center;
+}
+
+.ets-conflict-status {
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-self: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.ets-conflict-status.is-awaiting-gm {
+  border-color: rgba(220, 165, 75, 0.78);
+  color: #f3cf8b;
+  background: rgba(145, 95, 25, 0.42);
+}
+
+.ets-conflict-status.is-pending-validation {
+  border-color: rgba(105, 165, 225, 0.78);
+  color: #b9d9f5;
+  background: rgba(45, 95, 150, 0.42);
+}
+
+.ets-conflict-status.is-cancelled {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 2.5rem;
+  padding: 0.28rem 0.6rem;
+  border-color: rgba(175, 100, 100, 0.68);
+  border-radius: 999px;
+  color: #d7aaaa;
+  background: rgba(105, 55, 55, 0.38);
+  font-size: 0.75rem;
+  line-height: 1.1;
+}
+
+.ets-conflict-player-row {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 0.75rem;
+}
+
+.ets-conflict-player-row.has-actions {
+  grid-template-columns: minmax(0, 1fr) 2.25rem;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.ets-conflict-player-row:has(.ets-conflict-resource-actions[hidden]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ets-conflict-gm-row {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 0.75rem;
+}
+
+.ets-conflict-pool {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow:
+    0 0.3rem 0.7rem rgb(0 0 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgb(0 0 0 / 27%);
+}
+
+.ets-conflict-pool.is-player {
+  background: #003957a1;
+}
+
+.ets-conflict-pool.is-gm {
+  background: #6b190094;
+}
+
+.ets-conflict-pool.is-waiting {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.ets-conflict-pool__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.ets-conflict-pool__heading strong {
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+}
+
+.chat-message .ets-conflict-card .ets-dice-row {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  max-width: calc((5 * 1.65rem) + (4 * 0.32rem));
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.32rem;
+  margin-inline: auto;
+}
+
+.chat-message .ets-conflict-card .ets-die {
+  box-sizing: border-box;
+  display: inline-grid;
+  flex: 0 0 1.65rem;
+  width: 1.65rem;
+  height: 1.65rem;
+  place-items: center;
+  border: 2px solid rgb(15 17 20);
+  border-radius: 5px;
+  color: #0b0c0ef2;
+  background: rgba(245, 245, 242, 0.8);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: none;
+  box-shadow: 0 0 13px 2px rgb(0 0 0 / 57%);
+}
+
+.chat-message .ets-conflict-card .ets-die.is-neutral {
+  opacity: 1;
+  background: rgba(245, 245, 242, 0.8);
+}
+
+.chat-message .ets-conflict-card .ets-die.is-danger {
+  color: #0b0c0ef2;
+  background: rgb(215, 55, 70);
+}
+
+.chat-message .ets-conflict-card .ets-die.is-success,
+.chat-message .ets-conflict-card .ets-die--red.is-success {
+  color: #0b0c0ef2;
+  background: rgb(45, 180, 90);
+}
+
+.chat-message .ets-conflict-card .ets-die--red {
+  color: #0b0c0ef2;
+  background: rgba(245, 245, 242, 0.8);
+}
+
+.chat-message .ets-conflict-card .ets-die--hope {
+  color: #0b0c0ef2;
+  background: rgba(245, 245, 242, 0.8);
+}
+
+.chat-message .ets-conflict-card .ets-die--hope.is-hope-success {
+  color: #0b0c0ef2;
+  background: rgb(242, 218, 105);
+}
+
+.ets-conflict-hope {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ets-conflict-hope > strong {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.chat-message .ets-conflict-card .ets-dice-row--hope {
+  grid-column: 2;
+  width: auto;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.ets-conflict-resource-actions {
+  display: grid;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 0.35rem;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action {
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.35rem 0.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 5px;
+  font-size: 0.8rem;
+  line-height: 1;
+  text-orientation: mixed;
+  writing-mode: vertical-rl;
+  box-shadow:
+    0 0.22rem 0.45rem rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.32);
+  transition:
+    transform 120ms ease,
+    filter 120ms ease,
+    box-shadow 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action.is-virtue {
+  border-color: rgba(71, 82, 118, 0.78);
+  color: #9ba8c9;
+  background: rgba(22, 24, 35, 0.88);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action.is-vice {
+  border-color: rgba(121, 82, 52, 0.78);
+  color: #b68a63;
+  background: rgba(49, 29, 14, 0.82);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action.is-limit {
+  border-color: rgba(116, 52, 50, 0.82);
+  color: #c17c76;
+  background: rgba(39, 14, 14, 0.84);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action:hover:not(:disabled) {
+  filter: saturate(1.08) brightness(1.2);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0.36rem 0.62rem rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-resource-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  filter: saturate(0.68) brightness(0.82);
+}
+
+.ets-conflict-gm-reserved-space {
+  display: grid;
+}
+
+.ets-conflict-gm-reserved-space > * {
+  grid-area: 1 / 1;
+}
+
+.ets-conflict-gm-reserved-space .is-sizer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-gm-roll {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.35rem;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 130, 130, 0.8);
+  border-radius: 5px;
+  color: #ffffff;
+  background: rgba(155, 35, 35, 0.72);
+  white-space: normal;
+  text-align: center;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-gm-roll:hover:not(:disabled) {
+  border-color: rgba(255, 185, 185, 1);
+  color: #ffffff;
+  background: rgba(205, 45, 45, 0.9);
+  box-shadow: 0 0 0 1px rgba(255, 120, 120, 0.35);
+  cursor: pointer;
+}
+
+.ets-conflict-empty {
+  width: 100%;
+  margin: 0;
+  color: #c9cdd5 !important;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.ets-conflict-result {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  text-align: center;
+  box-shadow:
+    0 0.3rem 0.7rem rgb(0 0 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgb(0 0 0 / 27%);
+}
+
+.ets-conflict-result__heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ets-conflict-result__heading strong {
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-result__main {
+  color: inherit;
+  font-size: 0.8rem;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-result__note {
+  color: inherit;
+  font-size: 0.75rem;
+  opacity: 0.82;
+}
+
+.ets-conflict-result.is-provisional-success {
+  border-style: dashed;
+  border-color: rgb(82, 160, 51);
+  color: #dce6ad;
+  background: rgba(35, 105, 60, 0.52);
+}
+
+.ets-conflict-result.is-provisional-failure {
+  border-style: dashed;
+  border-color: rgba(212, 114, 34, 0.82);
+  color: #f0c986;
+  background: rgba(85, 20, 30, 0.36);
+}
+
+.ets-conflict-result.is-success {
+  border-color: rgba(80, 205, 120, 0.9);
+  color: #ffffffc4;
+  background: rgba(35, 105, 60, 0.38);
+}
+
+.ets-conflict-result.is-failure {
+  border-color: rgba(175, 65, 75, 0.9);
+  color: #f0bec4;
+  background: rgba(85, 20, 30, 0.52);
+}
+
+.ets-conflict-result.is-cancelled {
+  border-color: rgba(175, 100, 100, 0.68);
+  color: #d7aaaa;
+  background: rgba(105, 55, 55, 0.38);
+}
+
+.chat-message .ets-conflict-card .ets-narration-seize-compact {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(200, 169, 107, 0.58);
+  border-radius: 6px;
+  color: #d9ccb9;
+  background: rgba(200, 169, 107, 0.08);
+}
+
+.chat-message .ets-conflict-card .ets-narration-seize-compact button {
+  width: 100%;
+  border-color: #95825c;
+  color: #f5eddc;
+  background: rgba(112, 91, 48, 0.76);
+}
+
+.ets-conflict-gm-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.4rem;
+}
+
+.chat-message .ets-conflict-card .ets-conflict-gm-actions button {
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 5px;
+  color: #f4f5f7;
+  font-size: 0.78rem;
+  line-height: 1.1;
+  text-align: center;
+  white-space: normal;
+  box-shadow:
+    0 0.22rem 0.45rem rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.32);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-validate-action {
+  border-color: rgba(90, 210, 125, 0.55);
+  background: rgba(60, 130, 80, 0.28);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-cancel-action {
+  border-color: rgba(175, 100, 100, 0.68);
+  background: rgba(105, 55, 55, 0.38);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-gm-actions button:hover:not(:disabled) {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+
+.chat-message .ets-conflict-card .ets-conflict-gm-actions button:disabled,
+.chat-message .ets-conflict-card .ets-conflict-gm-roll:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 380px) {
+  .chat-message .ets-conflict-card__header h3 {
+    font-size: 2rem;
+    letter-spacing: 1.8px;
+  }
+
+  .ets-conflict-gm-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Phase 10A V3 — Design 2 généralisé à toutes les cartes de chat             */
+/* -------------------------------------------------------------------------- */
+
+.chat-message .ets-design2-card,
+.chat-message .ets-design2-card p,
+.chat-message .ets-design2-card span,
+.chat-message .ets-design2-card strong,
+.chat-message .ets-design2-card button,
+.chat-message .ets-design2-card dt,
+.chat-message .ets-design2-card dd {
+  font-family: "courier-prime", monospace !important;
+}
+
+.chat-message .ets-design2-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  color: #f2f3f5;
+  background: rgba(10, 12, 18, 0.94);
+}
+
+.chat-message .ets-design2-card h3,
+.chat-message .ets-design2-card p,
+.chat-message .ets-design2-card strong,
+.chat-message .ets-design2-card span,
+.chat-message .ets-design2-card i,
+.chat-message .ets-design2-card dt,
+.chat-message .ets-design2-card dd {
+  color: inherit;
+}
+
+.ets-design2-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ets-design2-card__header h3,
+.ets-design2-card__header p {
+  margin: 0;
+}
+
+.ets-design2-card__header h3 {
+  font-size: 1.3rem;
+  line-height: 1.15;
+}
+
+.ets-design2-card__header p {
+  margin-top: 0.2rem;
+  color: #c9cdd5 !important;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.ets-design2-card__header > i {
+  flex: 0 0 auto;
+  color: #d8bd70 !important;
+  font-size: 1.2rem;
+}
+
+.ets-design2-card__body {
+  margin: 0;
+  color: #d5d8de !important;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.ets-design2-result {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+  color: #f2f3f5;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0.3rem 0.7rem rgb(0 0 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgb(0 0 0 / 27%);
+}
+
+.ets-design2-result strong,
+.ets-design2-result span {
+  font-weight: 500;
+  text-align: center;
+}
+
+.ets-design2-result span {
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.ets-design2-result.is-success {
+  border-color: rgba(80, 205, 120, 0.9);
+  color: #ffffffc4;
+  background: rgba(35, 105, 60, 0.38);
+}
+
+.ets-design2-result.is-interrupted {
+  border-color: rgba(175, 100, 100, 0.68);
+  color: #e4b8b4;
+  background: rgba(105, 55, 55, 0.38);
+}
+
+.ets-design2-actions {
+  display: grid;
+  width: 100%;
+}
+
+.chat-message .ets-design2-card .ets-design2-action {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 5px;
+  color: #f4f5f7;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.82rem;
+  line-height: 1.15;
+  text-align: center;
+  box-shadow:
+    0 0.22rem 0.45rem rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.32);
+  transition:
+    transform 120ms ease,
+    filter 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.chat-message .ets-design2-card .ets-design2-action:hover:not(:disabled) {
+  filter: brightness(1.18);
+  transform: translateY(-1px);
+}
+
+.chat-message .ets-design2-card .ets-design2-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.chat-message .ets-design2-card .ets-design2-action.is-primary {
+  border-color: rgba(90, 210, 125, 0.55);
+  background: rgba(60, 130, 80, 0.28);
+}
+
+/* Bal des vérités — Design 2. */
+.chat-message .ets-ball-card {
+  border-color: rgba(225, 100, 100, 0.6);
+}
+
+.ets-design2-truth-counter {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0.3rem 0.7rem rgb(0 0 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgb(0 0 0 / 27%);
+}
+
+.ets-design2-truth-counter strong {
+  color: #e4ca7c !important;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.ets-design2-truth-counter span {
+  color: #f2f3f5 !important;
+  font-size: 0.82rem;
+}
+
+/* Instant — Design 2 construit dans le langage du module. */
+.chat-message .etc-instant-chat-card {
+  border-color: rgba(181, 151, 77, 0.72);
+  background: rgba(10, 12, 18, 0.94);
+}
+
+.etc-instant-chat-header {
+  display: block;
+  text-align: center;
+}
+
+.etc-instant-chat-header h3 {
+  width: 100%;
+  color: #c8a96b !important;
+  font-family: "special-elite", serif !important;
+  font-weight: 400;
+  text-align: center;
+}
+
+.etc-instant-chat-text {
+  margin: 0;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(200, 169, 107, 0.45);
+  border-radius: 7px;
+  color: #f0e6cf;
+  background: rgba(49, 43, 27, 0.5);
+  font-family: "special-elite", serif !important;
+  font-style: normal;
+  line-height: 1.4;
+  box-shadow:
+    0 0.3rem 0.7rem rgb(0 0 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgb(0 0 0 / 27%);
+}
+
+.etc-instant-chat-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0;
+}
+
+.chat-message .ets-design2-card .ets-design2-action.is-instant-success {
+  border-color: rgba(181, 151, 77, 0.82);
+  color: #f3e4b7;
+  background: rgba(104, 82, 34, 0.52);
+}
+
+.chat-message .ets-design2-card .ets-design2-action.is-instant-failure {
+  border-color: rgba(175, 100, 100, 0.72);
+  color: #f0c4bf;
+  background: rgba(105, 55, 55, 0.48);
+}
+
+.etc-instant-chat-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+  color: #d6d9df;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.etc-instant-chat-status.is-success {
+  border-color: rgba(181, 151, 77, 0.72);
+  color: #f1dfaa;
+  background: rgba(104, 82, 34, 0.32);
+}
+
+.etc-instant-chat-status.is-failure,
+.etc-instant-chat-status.is-cancelled {
+  border-color: rgba(175, 100, 100, 0.68);
+  color: #e4b8b4;
+  background: rgba(105, 55, 55, 0.38);
+}
+
+.chat-message .etc-instant-chat-card.is-suspended {
+  opacity: 0.78;
+}
+
+.chat-message .etc-instant-chat-card.is-failure,
+.chat-message .etc-instant-chat-card.is-cancelled {
+  opacity: 0.74;
+  filter: saturate(0.7);
+}
+
+/* Progression de l’obscurité — Design 2 du module. */
+.chat-message .ets-darkness-card,
+.chat-message .ets-departure-card {
+  gap: 0.55rem;
+}
+
+.ets-darkness-card__header,
+.ets-departure-card__header {
+  display: block;
+}
+
+.chat-message .ets-darkness-card__title,
+.chat-message .ets-departure-card__title {
+  margin: 0;
+  font-family: "special-elite", serif !important;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.ets-departure-card__message {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.chat-message .ets-darkness-card__text,
+.chat-message .ets-departure-card__text {
+  margin: 0;
+  color: #d5d8de;
+  font-family: "courier-prime", monospace !important;
+  line-height: 1.4;
+}
+
+/* Départ d’un personnage — Design 2 avec résultat final épuré. */
+.chat-message .ets-departure-card {
+  border-color: rgba(225, 100, 100, 0.68);
+}
+
+.ets-departure-card__last-candle {
+  border-color: rgba(225, 100, 100, 0.62);
+  color: #f0bec4;
+  background: rgba(85, 20, 30, 0.48);
+}
+
+.ets-departure-card__last-candle strong {
+  width: 100%;
+  text-align: center;
+}
+
+/* Nouvelle partie — Design 2 construit dans le langage du module. */
+.chat-message .ets-new-game-card {
+  border-color: rgba(200, 169, 107, 0.62);
+}
+
+/* Le bandeau collectif adopte lui aussi le relief du Design 2. */
+.chat-message .ets-design2-card .ets-collective-state-band {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 0.25rem 0.55rem rgb(0 0 0 / 55%),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.chat-message .ets-design2-card .ets-collective-state-band > div > span {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+@media (max-width: 380px) {
+  .etc-instant-chat-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 10A V4 — finitions fiche, Bal et Instant                             */
+/* -------------------------------------------------------------------------- */
+
+.chat-message .ets-ball-card .ets-next-scene-action {
+  min-height: 4.7rem;
+  padding-block: 0.8rem;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.chat-message .ets-ball-card .ets-next-scene-action > span {
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 10A V6 — passe éditoriale des cartes de chat                         */
+/* -------------------------------------------------------------------------- */
+
+.chat-message .etc-instant-chat-status > div {
+  display: grid;
+  gap: 0.14rem;
+  min-width: 0;
+}
+
+.chat-message .etc-instant-chat-status strong,
+.chat-message .etc-instant-chat-status span {
+  line-height: 1.35;
+}
+
+.chat-message .etc-instant-chat-status strong {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.chat-message .etc-instant-chat-status span {
+  font-size: 0.78rem;
+}
+
+.chat-message .ets-technical-card,
+.chat-message .ets-technical-card h3,
+.chat-message .ets-technical-card p,
+.chat-message .ets-technical-card span,
+.chat-message .ets-technical-card strong,
+.chat-message .ets-technical-card button,
+.chat-message .ets-technical-card dt,
+.chat-message .ets-technical-card dd {
+  font-family:
+    var(--font-primary, "Signika", sans-serif) !important;
+}
+
+.chat-message .ets-new-game-technical-summary {
+  display: grid;
+  gap: 0.48rem;
+  padding: 0.68rem 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0.3rem 0.7rem rgb(0 0 0 / 60%),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.chat-message .ets-new-game-technical-summary p {
+  margin: 0;
+  color: #d5d8de !important;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.chat-message .ets-new-game-technical-summary .ets-new-game-intro {
+  padding-bottom: 0.42rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f2f3f5 !important;
+}
+
+.chat-message .ets-new-game-card .ets-design2-card__header > i {
+  color: #c9cdd5 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 10A V8 — état final des cartes de conflit                            */
+/* -------------------------------------------------------------------------- */
+
+.ets-conflict-status.is-resolved {
+  border-color: rgba(96, 190, 120, 0.82);
+  color: #ffffff;
+  background: rgba(48, 138, 72, 0.88);
+  box-shadow:
+    0 0.16rem 0.4rem rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.ets-conflict-status.is-resolved > i {
+  color: #ffffff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Phase 10A V9 — cohérence finale                                            */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Les cartes de chat utilisent désormais exclusivement le Design 2.
+ * Les sélecteurs retirés ci-dessus appartenaient aux anciennes versions
+ * de la carte « Nouvelle partie » et de l’indicateur circulaire de Limite.
+ */
