@@ -1,4 +1,4 @@
-# Ten Candles – Game Assistant
+# Système de jeu - Ten Candles – Game Assistant
 
 ## Jouez à Ten Candles sur Foundry VTT sans laisser la technique prendre le pas sur la narration
 
