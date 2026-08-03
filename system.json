@@ -2,7 +2,7 @@
   "id": "tencandles-ga",
   "type": "system",
   "title": "Ten Candles – Game Assistant (Evilbram)",
-  "description": "Système communautaire non officiel pour Ten Candles intégrant une fiche de personnage dédiée et, à terme, une gestion assistée des conflits, des bougies et des pools de dés.",
+  "description": "Système communautaire non officiel pour jouer à Ten Candles sur Foundry VTT 14. Il assiste la gestion des fiches de personnage, des conflits, des bougies, des pools de dés et des transitions de scène, avec un canevas optionnel et une régie dédiée au Maître du jeu.",
   "authors": [
     {
       "name": "Evilbram"
