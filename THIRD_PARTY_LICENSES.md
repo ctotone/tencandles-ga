@@ -4,8 +4,6 @@
 
 Special Elite is distributed under the Apache License 2.0.
 
-Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI).
-
 Copyright and licensing information:
 https://github.com/google/fonts/tree/main/apache/specialelite
 
@@ -15,30 +13,16 @@ Bundled file expected by the system:
 fonts/special-elite.woff2
 ```
 
-The complete license text is included in:
-
-```text
-licenses/Apache-2.0.txt
-```
-
 ## Courier Prime
 
 Courier Prime is distributed under the SIL Open Font License 1.1.
 
 Designed by Alan Dague-Greene for Quote-Unquote Apps.
 
-Copyright 2015 The Courier Prime Project Authors.
-
 Bundled file expected by the system:
 
 ```text
 fonts/courier-prime.woff2
-```
-
-The complete license text is included in:
-
-```text
-licenses/OFL-1.1.txt
 ```
 
 Both fonts are loaded locally at runtime. The system does not depend on an active

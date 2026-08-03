@@ -1,11 +1,12 @@
 # Ten Candles – Game Assistant (Evilbram)
 
-Système communautaire non officiel pour jouer à **Ten Candles** avec
-**Foundry VTT 14**.
+Système communautaire non officiel pour jouer à **Ten Candles** avec Foundry VTT 14.
 
-## Fonctionnalités
+## État du développement
 
-Le système propose :
+Les phases 0 à 11 sont validées. La fiche de personnage et les cartes de chat disposent désormais de leur identité graphique finale pour la V1. La phase 12 est consacrée à la robustesse multijoueur et au playtest réel.
+
+Le système gère maintenant :
 
 - une fiche de personnage native avec Vice, Vertu, Instant à trois états, Espoir et Limite calculée ;
 - un état collectif persistant et indépendant des scènes ;
@@ -28,27 +29,8 @@ Le système propose :
 Le canevas reste une représentation visuelle reconstructible. L’état collectif
 est l’unique source de vérité mécanique.
 
-## Langues
-
-Le système est disponible en :
-
-- français ;
-- anglais ;
-- allemand ;
-- espagnol ;
-- italien ;
-- portugais du Brésil.
-
-## Installation
-
-Dans Foundry VTT, ouvrez l’onglet **Systèmes de jeu**, puis utilisez
-**Installer un système** avec l’URL de manifeste suivante :
-
-```text
-https://github.com/ctotone/tencandles-ga/releases/latest/download/system.json
-```
-
-## Projet non officiel
+Le titre du canevas utilise la police libre **Special Elite**, enregistrée auprès
+de Foundry afin d’être disponible dans les dessins de scène.
 
 Ten Candles est une création de Stephen Dewey / Cavalry Games. Ce projet n'est
 ni affilié ni approuvé officiellement par les ayants droit et nécessite le jeu
