@@ -1,0 +1,181 @@
+name: Publier une version sur Foundry VTT
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Tag de la release GitHub à publier (ex. 1.0.0)"
+        required: true
+        type: string
+      publish:
+        description: "Publier réellement après la validation à blanc"
+        required: true
+        default: false
+        type: boolean
+      confirmation:
+        description: "Pour publier réellement, saisir PUBLIER"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundry-publication
+  cancel-in-progress: false
+
+jobs:
+  publish-to-foundry:
+    name: Valider et publier sur Foundry VTT
+    runs-on: ubuntu-latest
+    environment: foundry-production
+
+    steps:
+      - name: Vérifier la demande
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          PUBLISH: ${{ inputs.publish }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$RELEASE_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "Tag invalide : $RELEASE_TAG" >&2
+            exit 1
+          fi
+
+          if [[ "$PUBLISH" == "true" && "$CONFIRMATION" != "PUBLIER" ]]; then
+            echo "La publication réelle exige la confirmation PUBLIER." >&2
+            exit 1
+          fi
+
+      - name: Charger et contrôler le manifeste de la release
+        id: manifest
+        env:
+          REPOSITORY: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+
+          manifest_url="https://github.com/${REPOSITORY}/releases/download/${RELEASE_TAG}/system.json"
+          notes_url="https://github.com/${REPOSITORY}/releases/tag/${RELEASE_TAG}"
+
+          curl --fail-with-body --location \
+            --retry 3 \
+            --output system.json \
+            "$manifest_url"
+
+          jq empty system.json
+
+          package_id="$(jq -r '.id // empty' system.json)"
+          version="$(jq -r '.version // empty | tostring' system.json)"
+          minimum="$(jq -r '.compatibility.minimum // empty | tostring' system.json)"
+          verified="$(jq -r '.compatibility.verified // empty | tostring' system.json)"
+          maximum="$(jq -r '.compatibility.maximum // empty | tostring' system.json)"
+          download_url="$(jq -r '.download // empty' system.json)"
+          expected_download_url="https://github.com/${REPOSITORY}/releases/download/${RELEASE_TAG}/tencandles-ga.zip"
+
+          [[ "$package_id" == "tencandles-ga" ]] || {
+            echo "Identifiant de package inattendu : $package_id" >&2
+            exit 1
+          }
+
+          [[ "$version" == "$RELEASE_TAG" ]] || {
+            echo "La version du manifeste ($version) ne correspond pas au tag ($RELEASE_TAG)." >&2
+            exit 1
+          }
+
+          [[ -n "$minimum" && -n "$verified" ]] || {
+            echo "Les compatibilités minimum et verified sont obligatoires." >&2
+            exit 1
+          }
+
+          [[ "$download_url" == "$expected_download_url" ]] || {
+            echo "URL download inattendue : $download_url" >&2
+            echo "URL attendue : $expected_download_url" >&2
+            exit 1
+          }
+
+          curl --fail-with-body --location \
+            --retry 3 \
+            --range 0-0 \
+            --output /dev/null \
+            "$download_url"
+
+          {
+            echo "package_id=$package_id"
+            echo "version=$version"
+            echo "minimum=$minimum"
+            echo "verified=$verified"
+            echo "maximum=$maximum"
+            echo "manifest_url=$manifest_url"
+            echo "notes_url=$notes_url"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Construire la requête Foundry
+        env:
+          PACKAGE_ID: ${{ steps.manifest.outputs.package_id }}
+          VERSION: ${{ steps.manifest.outputs.version }}
+          MINIMUM: ${{ steps.manifest.outputs.minimum }}
+          VERIFIED: ${{ steps.manifest.outputs.verified }}
+          MAXIMUM: ${{ steps.manifest.outputs.maximum }}
+          MANIFEST_URL: ${{ steps.manifest.outputs.manifest_url }}
+          NOTES_URL: ${{ steps.manifest.outputs.notes_url }}
+        run: |
+          set -euo pipefail
+
+          jq -n \
+            --arg id "$PACKAGE_ID" \
+            --arg version "$VERSION" \
+            --arg manifest "$MANIFEST_URL" \
+            --arg notes "$NOTES_URL" \
+            --arg minimum "$MINIMUM" \
+            --arg verified "$VERIFIED" \
+            --arg maximum "$MAXIMUM" \
+            '{
+              id: $id,
+              release: {
+                version: $version,
+                manifest: $manifest,
+                notes: $notes,
+                compatibility: {
+                  minimum: $minimum,
+                  verified: $verified,
+                  maximum: $maximum
+                }
+              }
+            }' > foundry-request.json
+
+      - name: Validation à blanc auprès de Foundry
+        env:
+          FOUNDRY_RELEASE_TOKEN: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$FOUNDRY_RELEASE_TOKEN" ]]; then
+            echo "Le secret FOUNDRY_RELEASE_TOKEN n'est pas configuré." >&2
+            exit 1
+          fi
+
+          jq '. + {"dry-run": true}' foundry-request.json > foundry-dry-run.json
+
+          curl --fail-with-body \
+            --request POST \
+            --header "Authorization: ${FOUNDRY_RELEASE_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data @foundry-dry-run.json \
+            "https://foundryvtt.com/_api/packages/release_version/"
+
+      - name: Publier la version auprès de Foundry
+        if: ${{ inputs.publish }}
+        env:
+          FOUNDRY_RELEASE_TOKEN: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          curl --fail-with-body \
+            --request POST \
+            --header "Authorization: ${FOUNDRY_RELEASE_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data @foundry-request.json \
+            "https://foundryvtt.com/_api/packages/release_version/"
