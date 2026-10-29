@@ -1,0 +1,55 @@
+<div class="etc-voice-body">
+  <div class="etc-voice-device">
+    <section class="etc-voice-upper" aria-label="{{localize 'ETC.Voice.Status'}}" aria-live="polite">
+      <div class="etc-voice-state">{{status}} <span data-voice-time>{{duration}}</span></div>
+      {{#unless isGM}}
+        {{#if showActorSelector}}
+          <label class="etc-voice-actor-label" for="etc-voice-actor">{{localize 'ETC.Voice.Character'}}</label>
+          <select id="etc-voice-actor" data-voice-actor {{#if busy}}disabled{{/if}} {{#if canDelete}}disabled{{/if}} {{#if recording}}disabled{{/if}}>
+            {{#each actorOptions}}
+              <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          {{#unless hasActors}}<div class="etc-voice-help">{{localize 'ETC.Voice.NoCharacter'}}</div>{{/unless}}
+        {{/if}}
+        {{#if playerHint}}{{#if hasActors}}<div class="etc-voice-help">{{playerHint}}</div>{{/if}}{{/if}}
+      {{else}}
+        {{#if gmHint}}<div class="etc-voice-help">{{gmHint}}</div>{{/if}}
+      {{/unless}}
+      <div class="etc-voice-notice" data-voice-notice>{{notice}}</div>
+    </section>
+    <div class="etc-voice-transport" role="group" aria-label="{{localize 'ETC.Voice.Controls'}}">
+      <button type="button" class="etc-voice-key etc-voice-key--record" data-voice-action="record" aria-label="{{localize 'ETC.Voice.Record'}}" title="{{localize 'ETC.Voice.Record'}}" {{#unless canRecord}}disabled{{/unless}}></button>
+      <button type="button" class="etc-voice-key etc-voice-key--stop" data-voice-action="stop" aria-label="{{localize 'ETC.Voice.Stop'}}" title="{{localize 'ETC.Voice.Stop'}}" {{#unless canStop}}disabled{{/unless}}></button>
+      <button type="button" class="etc-voice-key etc-voice-key--play" data-voice-action="play" aria-label="{{localize 'ETC.Voice.PlayPause'}}" title="{{localize 'ETC.Voice.PlayPause'}}" {{#unless canPlay}}disabled{{/unless}}></button>
+      <button type="button" class="etc-voice-key etc-voice-key--save" data-voice-action="save" aria-label="{{localize 'ETC.Voice.Save'}}" title="{{localize 'ETC.Voice.Save'}}" {{#unless canSave}}disabled{{/unless}}></button>
+      <button type="button" class="etc-voice-key etc-voice-key--delete" data-voice-action="delete-draft" aria-label="{{localize 'ETC.Voice.Discard'}}" title="{{localize 'ETC.Voice.Discard'}}" {{#unless canDelete}}disabled{{/unless}}></button>
+    </div>
+    <section class="etc-voice-lower" aria-label="{{localize 'ETC.Voice.Messages'}}">
+      <div class="etc-voice-list-title">{{localize 'ETC.Voice.Messages'}}</div>
+      <div class="etc-voice-list">
+        {{#if hasMessages}}
+          {{#each records}}
+            <div class="etc-voice-entry {{#if selected}}etc-voice-entry--selected{{/if}}">
+              <span class="etc-voice-name" title="{{actorName}}">{{actorName}}</span>
+              <span class="etc-voice-entry-state">{{status}} · {{duration}}</span>
+              {{#if ../isGM}}
+                <div class="etc-voice-entry-actions">
+                  <button type="button" class="etc-voice-monitor-button {{#if previewing}}etc-voice-monitor-button--active{{/if}}" data-voice-action="preview-record" data-record-id="{{id}}" aria-label="{{localize 'ETC.Voice.PreviewPrivate'}}" title="{{localize 'ETC.Voice.PreviewPrivate'}}" {{#unless canPreview}}disabled{{/unless}}><i class="fa-solid fa-headphones" aria-hidden="true"></i></button>
+                  <button type="button" data-voice-action="play-record" data-record-id="{{id}}" aria-label="{{localize 'ETC.Voice.Play'}}" title="{{localize 'ETC.Voice.Play'}}" {{#unless canManage}}disabled{{/unless}} {{#unless locked}}disabled{{/unless}}>▶</button>
+                  <button type="button" data-voice-action="delete-record" data-record-id="{{id}}" aria-label="{{localize 'ETC.Voice.Delete'}}" title="{{localize 'ETC.Voice.Delete'}}" {{#unless canManage}}disabled{{/unless}}>×</button>
+                </div>
+              {{/if}}
+            </div>
+          {{/each}}
+        {{else}}<div class="etc-voice-empty">{{localize 'ETC.Voice.NoMessages'}}</div>{{/if}}
+      </div>
+      {{#unless isGM}}<p class="etc-voice-footer">{{limitLabel}} · {{#if locked}}{{localize 'ETC.Voice.PlayerLockedInfo'}}{{else}}{{localize 'ETC.Voice.DraftInfo'}}{{/if}}</p>{{/unless}}
+    </section>
+  </div>
+  <aside class="etc-voice-guidance" role="note" aria-labelledby="etc-voice-guidance-title">
+    <div class="etc-voice-guidance-title" id="etc-voice-guidance-title">{{localize 'ETC.Voice.GuidanceTitle'}}</div>
+    <p class="etc-voice-guidance-text">{{localize 'ETC.Voice.GuidanceText'}}</p>
+  </aside>
+</div>

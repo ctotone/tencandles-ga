@@ -99,11 +99,22 @@ function normalizeInstantRequest(rawRequest) {
     request.activeMessageId
   );
 
+  // Un Instant n'est brûlé qu'une fois sa carte effectivement publiée.
+  // Les demandes publiées avant cette évolution sont reconnues également.
+  request.declaredAt = normalizeTimestamp(request.declaredAt);
+  request.momentRollResolutionId = normalizeNullableString(
+    request.momentRollResolutionId
+  );
+
   if (
     request.activeMessageId &&
     !request.messageIds.includes(request.activeMessageId)
   ) {
     request.messageIds.push(request.activeMessageId);
+  }
+
+  if (!request.declaredAt && request.messageIds.length > 0) {
+    request.declaredAt = request.updatedAt ?? request.createdAt ?? Date.now();
   }
 
   if (
@@ -259,6 +270,9 @@ function normalizeResolution(rawResolution) {
 
   resolution.limitAvailableAtStart = Boolean(
     resolution.limitAvailableAtStart
+  );
+  resolution.momentRequestId = normalizeNullableString(
+    resolution.momentRequestId
   );
 
   resolution.finalSuccess =

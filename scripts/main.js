@@ -10,6 +10,12 @@ import { TenCandlesCharacterData } from "./data/character-data.js";
 import { TenCandlesCharacterSheet } from "./sheets/character-sheet.js";
 import { TenCandlesStateControl } from "./apps/game-state-control.js";
 import { mountAboutInSettings } from "./apps/about.js";
+import { TenCandlesVoiceRecorder } from "./apps/voice-recorder.js";
+import { mountVoiceActorDirectoryButton } from "./controls/voice-access.js";
+import { registerVoiceRegistry, VOICE_CHANGED_HOOK } from "./voice/storage.js";
+import { onVoiceSocketMessage, resetVoiceBroadcastForNewGame } from "./voice/socket.js";
+import { clearPreviousGamePlayback } from "./voice/playback.js";
+import { stopPreviousGameVoicePlaylist } from "./voice/playlist-broadcast.js";
 
 import { registerSystemFonts } from "./fonts.js";
 
@@ -47,6 +53,8 @@ import {
 import {
   createNewGame
 } from "./management/game-manager.js";
+
+import { transferHopeDieGM } from "./management/actor-resources.js";
 
 import {
   isPartyLifecycleLocked
@@ -172,6 +180,7 @@ Hooks.once("init", () => {
 
   registerCollectiveStateSetting();
   registerDepartureMessageHistorySetting();
+  registerVoiceRegistry();
 
   game.settings.registerMenu(
     SYSTEM_ID,
@@ -218,7 +227,17 @@ Hooks.on("preCreateActor", (actor, data) => {
   });
 });
 
+let voiceObservedGameId = null;
+Hooks.on(VOICE_CHANGED_HOOK, () => TenCandlesVoiceRecorder.refreshAll());
 Hooks.on(COLLECTIVE_STATE_CHANGED_HOOK, (state) => {
+  if (voiceObservedGameId && state.gameId !== voiceObservedGameId) {
+    clearPreviousGamePlayback();
+    void stopPreviousGameVoicePlaylist().catch((error) =>
+      console.error(`${SYSTEM_ID} | Cannot stop previous game voice playlist`, error));
+    resetVoiceBroadcastForNewGame();
+    TenCandlesVoiceRecorder.refreshAll();
+  }
+  voiceObservedGameId = state.gameId;
   if (
     isActiveGM() &&
     !isBallOfTruthsStateCoherent(state)
@@ -269,7 +288,11 @@ Hooks.on(COLLECTIVE_STATE_CHANGED_HOOK, (state) => {
 });
 
 Hooks.once("ready", async () => {
-  game.socket.on(SOCKET_NAME, onSocketMessage);
+  game.socket.on(SOCKET_NAME, (data) => {
+    onSocketVoiceMessageSafely(data);
+    void onSocketMessage(data);
+  });
+  voiceObservedGameId = getCollectiveState().gameId;
 
   await ensureCollectiveStateInitialized();
   await repairIncoherentStageSafely();
@@ -321,6 +344,12 @@ Hooks.once("ready", async () => {
       requestAction("start-next-scene", payload),
     seizeNarration: (resolutionId) =>
       requestAction("seize-narration", { resolutionId }),
+    /**
+     * Transfert de Martyre (MJ actif uniquement, identifiants d'Actors du monde).
+     * Réutilise les contrôles de la régie ; pas de nouveau bouton ni de socket.
+     */
+    transferHopeDie: (fromActorId, toActorId) =>
+      transferHopeDieGM(fromActorId, toActorId),
     createNewGame,
 
     canvas: {
@@ -331,7 +360,8 @@ Hooks.once("ready", async () => {
       repair: repairOfficialCanvas
     },
 
-    openStateControl: () => TenCandlesStateControl.open()
+    openStateControl: () => TenCandlesStateControl.open(),
+    openVoiceRecorder: () => TenCandlesVoiceRecorder.open()
   };
 
   mountFloatingPlayerRollButton();
@@ -351,8 +381,15 @@ Hooks.on(
   "renderActorDirectory",
   mountGMStateControlActorDirectoryButton
 );
+Hooks.on("renderActorDirectory", mountVoiceActorDirectoryButton);
+
+function onSocketVoiceMessageSafely(data) {
+  try { onVoiceSocketMessage(data); }
+  catch (error) { console.error(`${SYSTEM_ID} | Voice socket error`, error); }
+}
 
 function refreshStateControlForActorChange() {
+  TenCandlesVoiceRecorder.refreshAll();
   for (const app of TenCandlesStateControl.instances()) {
     if (app.rendered) app.render();
   }

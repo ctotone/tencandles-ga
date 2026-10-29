@@ -17,13 +17,23 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 </p>
 
 
+## Nouveautés — Version 1.2.0 / What's New — Version 1.2.0
+
+**FR — Nouveau : « Derniers Messages ».** Les joueurs enregistrent leurs derniers mots dans un dictaphone intégré au système ; le MJ peut les préécouter en privé puis les diffuser à toute la table, au moment choisi, via une playlist native Foundry au volume réglable. Les enregistrements sont sauvegardés avec un **MJ actif connecté**, verrouillés après validation et conservés par partie. La version 1.2.0 applique également la relance complète des dés d'Espoir avec la Limite et fait compter l'Instant comme brûlé dès la publication de sa carte. Merci à **Vinai** pour ses contributions aux règles et aux API.
+
+**EN — New: “Final Messages”.** Players record their characters' final words through an integrated voice recorder; the GM can preview them privately and then play individual messages to the whole table using a native, volume-controlled Foundry playlist. Saving requires a **connected active GM**; confirmed messages are locked and archived per game. Version 1.2.0 also rerolls Hope dice when a Brink is embraced and counts a Moment as burned when its chat card is published. Thanks to **Vinai** for the rule and API contributions.
+
+**For module developers / Pour les développeurs de modules :** [`documentation/API_1.2.0.md`](documentation/API_1.2.0.md) documents `game.evilTenCandles.transferHopeDie(fromActorId, toActorId)` (active GM only) and the optional `game.evilTenCandles.requestPlayerRoll(actorUuid, { momentRequestId })` parameter.
+
+**Validation / Vérification :** live microphone capture and the complete multiplayer/rules regression pass are still pending. / La capture réelle au microphone et la recette complète multijoueur/règles restent à confirmer.
+
+See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
+
 ## Nouveautés — Version 1.1.0 / What's New — Version 1.1.0
 
-**FR :** Le canevas officiel propose désormais huit thèmes : **Classique, Forêt enfant, Futuriste, Lovecraft, Magie, Médiéval, Post-apocalyptique et Western**. Les manuels du MJ et du Joueur sont disponibles **en français et en anglais** dans le compendium. Le **mode Accéléré**, facultatif, facilite les parties courtes : sur les jets concernés, chaque paire de 2 obtenue sur les dés joueurs devient 1 et 2, accélérant la perte des dés. Le MJ définit la dernière bougie concernée (6e par défaut).
+**FR :** Huit thèmes de canevas, manuels MJ/Joueur FR et EN, mode Accéléré facultatif et améliorations mécaniques. Voir le changelog 1.1.0.
 
-**EN:** The official canvas now offers eight themes: **Classic, Children's Forest, Futuristic, Lovecraft, Magic, Medieval, Post-Apocalyptic, and Western**. The **GM and Player manuals** are available **in French and English** in the compendium. The optional **Accelerated Mode** supports shorter sessions: on applicable rolls, each pair of player dice showing 2 becomes 1 and 2, speeding up dice attrition. The GM sets the last candle affected (sixth by default).
-
-See [CHANGELOG.md](CHANGELOG.md) for release details.
+**EN:** Eight canvas themes, FR/EN GM and Player manuals, optional Accelerated Mode and rule improvements. See the 1.1.0 changelog.
 
 ## Nouveauté — Version 1.0.1
 
@@ -83,6 +93,14 @@ Simple et intuitive, la régie rassemble ce dont il a besoin au moment où il en
 
 ![Ten Candles Game assistant](https://raw.githubusercontent.com/ctotone/JdR/refs/heads/main/.Images/foundry_presenatation_regie.webp)
 
+## Derniers Messages : la voix des personnages
+
+À la fin de l'histoire, le MJ peut diffuser les messages enregistrés par les personnages, **un à un et dans l'ordre de son choix**, sans automatisme lié à l'extinction de la dernière bougie. L'accès au dictaphone se trouve au-dessus de la liste des personnages.
+
+Chaque joueur peut enregistrer, écouter et recommencer son brouillon avant une sauvegarde définitive. L'envoi du fichier est effectué par le **MJ actif connecté**, sur le stockage persistant du système ; les messages validés sont verrouillés. Le MJ dispose d'une **préécoute locale**, d'une commande de diffusion collective et d'un réglage du volume depuis la playlist Foundry « Derniers Messages ». Les enregistrements sont conservés et séparés par partie.
+
+**Limitations :** microphone utilisable dans un navigateur compatible en contexte sécurisé, enregistrement limité à **2 min / 6 Mio**. Supprimer une entrée depuis le dictaphone n'efface pas le fichier physique du serveur. L'audio n'est pas chiffré ; une URL de fichier accessible directement n'est pas protégée par la simple absence de bouton dans l'interface. La capture avec un micro réel et tous les scénarios multiclients restent à valider pour cette release.
+
 ## Jusqu’à la dernière bougie…
 
 Du premier jet de dés à l’extinction de la dernière bougie, le système accompagne la table tout au long de la partie, sans jamais prendre la place de celles et ceux qui racontent.
@@ -99,6 +117,7 @@ Car dans *Ten Candles*, il ne s’agit pas de savoir si les personnages vont sur
 - **Canevas officiel** : une scène prête à jouer avec bougies, lumières et dés.
 - **Dispositif personnalisé** : bougies physiques, caméra ou scène personnelle restent pleinement compatibles.
 - **Régie du Maître du jeu** : les principaux outils techniques réunis dans une seule interface.
+- **Derniers Messages vocaux** : enregistrement joueur, préécoute privée MJ, diffusion via playlist Foundry et archivage par partie.
 
 ## Informations
 

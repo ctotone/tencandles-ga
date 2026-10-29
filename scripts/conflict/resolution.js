@@ -46,6 +46,7 @@ import { effectiveBlueResults, speedApplies } from "./speed.js";
 import {
   analyzeResolution,
   countValue,
+  getHopeResults,
   rollD6Pool,
   rollPlayerD6Pool
 } from "./dice.js";
@@ -174,7 +175,8 @@ async function saveAndRefreshResolution(
 
 export async function handlePlayerRoll(
   requesterId,
-  actorUuid
+  actorUuid,
+  { momentRequestId = null } = {}
 ) {
   const requester = game.users.get(requesterId);
 
@@ -270,7 +272,29 @@ export async function handlePlayerRoll(
       return false;
     }
 
-    const resources = getActorResourceState(actor);
+    // Publication de la carte d'Instant = consommation avant le jet.
+    // L'API facultative peut associer CE jet à la demande publiée.
+    const requestedId = momentRequestId === null ? null : (
+      typeof momentRequestId === "string" ? momentRequestId.trim() : ""
+    );
+    const declaredRequest = requestedId
+      ? (state.instantRequests ?? []).find((request) =>
+          request.id === requestedId &&
+          request.declaredAt &&
+          !actor.system.momentAttempted &&
+          !request.momentRollResolutionId &&
+          (request.actorId === actor.id || request.actorUuid === actor.uuid)
+        )
+      : null;
+    if (momentRequestId !== null && !declaredRequest) {
+      notifyRequester(
+        requesterId, "warn",
+        game.i18n.localize("ETC.Notifications.MomentRollInvalid")
+      );
+      return false;
+    }
+
+    const resources = getActorResourceState(actor, { state });
     const bluePoolSize = state.bluePoolRemaining;
 
     const gameplayMode = state.gameplayMode === GAMEPLAY_MODES.SPEED
@@ -344,6 +368,7 @@ export async function handlePlayerRoll(
       // qu'au conflit suivant.
       limitAvailableAtStart:
         Boolean(resources.canUseLimit),
+      momentRequestId: declaredRequest?.id ?? null,
 
       finalSuccess: null,
       narrator: null,
@@ -381,6 +406,17 @@ export async function handlePlayerRoll(
       state: stateWithSuspendedInstants,
       suspendedRequests
     } = suspendInstantRequestsInState(state);
+
+    // Si l'API a lié le jet à un Instant, persister le lien et la résolution
+    // ensemble, sous le verrou de cycle de partie déjà acquis.
+    if (declaredRequest) {
+      stateWithSuspendedInstants.instantRequests =
+        stateWithSuspendedInstants.instantRequests.map((request) =>
+          request.id === declaredRequest.id
+            ? { ...request, momentRollResolutionId: resolution.id }
+            : request
+        );
+    }
 
     // Sauvegarde mécanique avant la projection dans le chat.
     await saveCollectiveState({
@@ -753,11 +789,16 @@ export async function handleLimit(
       return false;
     }
 
+    // PR #4 : la Limite relance toute la réserve, y compris chaque dé d'Espoir.
+    // Le nombre provient du jet en cours (pas de l'état actuel de la fiche).
+    const hopeCount = getHopeResults(resolution).length;
     const {
-      results
-    } = await rollD6Pool(
+      blueResults: results,
+      hopeResults
+    } = await rollPlayerD6Pool(
       resolution.bluePoolSize,
       {
+        hopeDice: hopeCount,
         speedBlue: speedApplies(resolution),
         userId: resolution.playerId,
         actorId: resolution.actorId
@@ -769,19 +810,29 @@ export async function handleLimit(
       results, speedEnabled
     );
     resolution.blueResults = effectiveResults;
+    resolution.hopeResults = clone(hopeResults);
+    resolution.momentUsed = hopeResults.length > 0;
+    resolution.momentResult = hopeResults[0] ?? null;
     resolution.rerolls.limit = true;
 
+    const timestamp = Date.now();
     resolution.history = [
       ...(resolution.history ?? []),
       {
         type: "limit",
         results: clone(effectiveResults),
         rawResults: clone(results),
-        timestamp: Date.now()
-      }
+        timestamp
+      },
+      ...(hopeResults.length > 0 ? [{
+        type: "hope-roll",
+        result: hopeResults[0],
+        results: clone(hopeResults),
+        reroll: "limit",
+        timestamp
+      }] : [])
     ];
 
-    // Le dé d'Espoir est volontairement conservé.
     await saveAndRefreshResolution(
       state,
       resolution
@@ -1341,8 +1392,17 @@ export async function cancelActiveResolution({
       }
     ];
 
+    // Annuler le jet lié par API libère son association, mais ne restaure
+    // PAS l'Instant : sa carte avait déjà été publiée et donc brûlée.
+    const instantRequests = (state.instantRequests ?? []).map((request) =>
+      request.momentRollResolutionId === resolution.id
+        ? { ...request, momentRollResolutionId: null }
+        : request
+    );
+
     await saveCollectiveState({
       ...state,
+      instantRequests,
       activeResolution: null,
       lastResolution: resolution
     });

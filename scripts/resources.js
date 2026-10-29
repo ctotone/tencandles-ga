@@ -10,15 +10,29 @@ const RESOURCE_PATHS = Object.freeze({
   virtue: "system.virtue.available"
 });
 
-export function getActorResourceState(actor) {
+export function getActorResourceState(actor, { state = null } = {}) {
   const system = actor?.system;
+  const declaredInstant = Boolean(
+    (state?.instantRequests ?? []).some((request) =>
+      request.declaredAt &&
+      (request.actorId === actor?.id || request.actorUuid === actor?.uuid)
+    )
+  );
+  const brinkAvailable = Boolean(
+    system?.brinkAvailable || (
+      declaredInstant &&
+      system?.viceConsumed &&
+      system?.virtueConsumed &&
+      !system?.brinkBurned
+    )
+  );
 
   return {
     canUseVice: Boolean(system?.vice?.available),
     canUseVirtue: Boolean(system?.virtue?.available),
     canUseMoment: Boolean(system?.hopeDieAvailable),
     hopeDice: Math.max(0, Number(system?.hopeDiceCount) || 0),
-    canUseLimit: Boolean(system?.brinkAvailable)
+    canUseLimit: brinkAvailable
   };
 }
 

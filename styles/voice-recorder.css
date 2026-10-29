@@ -1,0 +1,104 @@
+/* Isolated dictaphone UI: percentages follow the supplied 2047x1437 artwork. */
+.etc-voice-recorder .window-content { padding: 0; background: #050505; overflow: auto; }
+.etc-voice-recorder .etc-voice-body { display: grid; place-items: start center; align-content: start; gap: 10px; min-height: 100%; padding: 8px; background: #030303; }
+.etc-voice-recorder .etc-voice-device {
+  container-type: inline-size; width: 85%; min-width: 620px; max-width: 1100px;
+  aspect-ratio: 2047 / 1437; position: relative; flex: none;
+  background: url('../assets/voice/magneto.webp') 50% 50% / 100% 100% no-repeat;
+  color: #d3e7d1; font-family: ui-monospace, Consolas, monospace;
+}
+.etc-voice-recorder .etc-voice-upper {
+  position: absolute; left: 10.1%; top: 10.0%; width: 79.6%; height: 14.4%;
+  box-sizing: border-box; display: flex; flex-wrap: wrap; align-content: center;
+  align-items: center; gap: 1.1cqw; overflow: hidden; padding: 0.6cqw 1.4cqw;
+  font-size: clamp(10px, 1.7cqw, 19px); text-shadow: 0 0 6px #6caf75;
+}
+.etc-voice-recorder .etc-voice-state { color: #bbecb7; font-weight: 700; flex: 1 1 55%; white-space: nowrap; }
+.etc-voice-recorder .etc-voice-actor-label { font-size: .83em; }
+.etc-voice-recorder select[data-voice-actor] {
+  appearance: auto; background: #111e15; color: #d5eed5;
+  border: 1px solid #66866a; border-radius: 2px;
+  padding: 1px 3px; height: auto; width: auto; max-width: 56%; min-width: 12cqw;
+  font-size: .86em;
+}
+.etc-voice-recorder .etc-voice-help { color: #e8bd89; font-size: .9em; }
+.etc-voice-recorder .etc-voice-notice { color: #d5b988; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; font-size: .82em; min-height: 1em; }
+.etc-voice-recorder .etc-voice-transport { position: absolute; inset: 0; pointer-events: none; }
+.etc-voice-recorder .etc-voice-key {
+  position: absolute; top: 29.8%; width: 10.5%; height: 14.8%;
+  border-radius: 50%; border: 2px solid transparent; padding: 0; margin: 0;
+  background: transparent; pointer-events: auto; cursor: pointer;
+  transition: background .12s ease, box-shadow .12s ease, transform .12s ease;
+}
+.etc-voice-recorder .etc-voice-key--record { left: 12.8%; }
+.etc-voice-recorder .etc-voice-key--stop { left: 28.7%; }
+.etc-voice-recorder .etc-voice-key--play { left: 44.7%; top: 29.8%; width: 10.2%; height: 14.8%; }
+.etc-voice-recorder .etc-voice-key--save { left: 60.5%; }
+.etc-voice-recorder .etc-voice-key--delete { left: 76.2%; }
+.etc-voice-recorder .etc-voice-key:not(:disabled):hover { box-shadow: inset 0 0 1.6cqw #c0e2cb50, 0 0 1.3cqw #b2caa033; background: #a5cd9a18; }
+.etc-voice-recorder .etc-voice-key:not(:disabled):active { transform: scale(.95); background: #d9ecd039; }
+.etc-voice-recorder .etc-voice-key:disabled { cursor: not-allowed; opacity: .25; background: #06060622; }
+.etc-voice-recorder .etc-voice-key:focus-visible { outline: 2px solid #dbecb1; outline-offset: -7px; }
+.etc-voice-recorder .etc-voice-lower {
+  position: absolute; left: 10.2%; top: 56.0%; width: 79.6%; height: 33.8%;
+  padding: 1.1cqw 1.25cqw; box-sizing: border-box;
+  font-size: clamp(10px, 1.28cqw, 15px);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.etc-voice-recorder .etc-voice-list-title { font-weight: 700; color: #a9cca5; border-bottom: 1px solid #3b5341; padding-bottom: .45cqw; flex: none; }
+.etc-voice-recorder .etc-voice-list { overflow-y: auto; overflow-x: hidden; flex: 1; scrollbar-color: #657966 #101712; scrollbar-width: thin; }
+.etc-voice-recorder .etc-voice-entry { display: flex; align-items: center; gap: .8cqw; border-bottom: 1px solid #233528; min-height: 2.55em; padding: .2cqw .1cqw; }
+.etc-voice-recorder .etc-voice-entry--selected { background: #34543a66; }
+.etc-voice-recorder .etc-voice-guidance {
+  box-sizing: border-box;
+  width: 85%;
+  min-width: 620px;
+  max-width: 1100px;
+  border-top: 1px solid #536c57;
+  padding: 11px 15px 13px;
+  color: #c2d3bf;
+  font-family: "courier-prime", monospace;
+  font-size: clamp(12px, 1.1vw, 15px);
+  line-height: 1.48;
+  text-align: center;
+}
+.etc-voice-recorder .etc-voice-guidance-title { color: #b4dda9; font-weight: bold; margin-bottom: 5px; }
+.etc-voice-recorder .etc-voice-guidance-text { margin: 0; }
+
+.etc-voice-recorder .etc-voice-name { flex: 1 1 30%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.etc-voice-recorder .etc-voice-entry-state { flex: 0 0 auto; color: #9ab3a0; font-size: .83em; }
+.etc-voice-recorder .etc-voice-entry-actions { display: flex; flex: none; gap: .25cqw; }
+.etc-voice-recorder .etc-voice-entry-actions button { border: 1px solid #59705a; background: #203226; color: #d3e3d1; border-radius: 3px; min-width: 2em; height: 2em; cursor: pointer; padding: 0 .3em; }
+.etc-voice-recorder .etc-voice-entry-actions button:hover:not(:disabled) { background: #49644d; }
+.etc-voice-recorder .etc-voice-monitor-button--active { background: #49644d !important; box-shadow: inset 0 0 0 1px #bbecb7; }
+.etc-voice-recorder .etc-voice-entry-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.etc-voice-recorder .etc-voice-empty { padding: 1cqw; color: #7f9985; }
+.etc-voice-recorder .etc-voice-footer { color: #9cb59d; font-size: .83em; padding: .5cqw 0 0; margin: 0; flex: none; }
+.etc-voice-directory-access { width: 100%; box-sizing: border-box; padding: 0 4px 7px; }
+.etc-voice-directory-access__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 2047 / 680;
+  padding: 0% 9% 12% 9%;
+  box-sizing: border-box;
+  color: #bde0bb;
+  text-shadow: 0 0 6px #82c48b;
+  font-family: "courier-prime", monospace;
+  font-weight: bold;
+  font-size: clamp(12px, 1.2vw, 16px);
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+  background: url('../assets/voice/background_micro.webp') center / 100% 100% no-repeat;
+}
+.etc-voice-directory-access__button:hover { filter: brightness(1.25); }
+.etc-voice-directory-access__button:active { filter: brightness(1.45); transform: scale(.99); }
+.etc-voice-directory-access__button:focus-visible { outline: 2px solid #c5e7bc; outline-offset: 0; }
+@media (max-width: 760px) {
+  .etc-voice-recorder .etc-voice-body { padding: 2px; }
+  .etc-voice-recorder .etc-voice-lower { font-size: clamp(8px, 1.6cqw, 13px); }
+  .etc-voice-recorder .etc-voice-upper { font-size: clamp(9px, 2.1cqw, 16px); }
+}

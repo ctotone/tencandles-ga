@@ -210,6 +210,8 @@ async function publishSingleInstantRequest(requestId) {
     ...latest,
     status: finalStatus,
     activeMessageId: message.id,
+    // Publication effective : l'Instant est déclaré et brûlé avant les dés.
+    declaredAt: latest.declaredAt ?? Date.now(),
     messageIds: [
       ...new Set([
         ...(latest.messageIds ?? []),
@@ -335,6 +337,8 @@ export async function handleRequestInstant(
       status: INSTANT_REQUEST_STATUSES.QUEUED,
       messageIds: [],
       activeMessageId: null,
+      declaredAt: null,
+      momentRollResolutionId: null,
       createdAt: now,
       updatedAt: now
     };

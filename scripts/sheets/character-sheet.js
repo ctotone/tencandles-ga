@@ -116,6 +116,14 @@ export class TenCandlesCharacterSheet extends HandlebarsApplicationMixin(
       this.actor
     );
     const momentStatus = system.momentStatus;
+    const momentDeclared = Boolean(instantRequest?.declaredAt);
+    const brinkAvailable = Boolean(
+      system.brinkAvailable || (
+        momentDeclared &&
+        system.viceConsumed && system.virtueConsumed &&
+        !system.brinkBurned
+      )
+    );
 
     const resourceContexts = {
       virtue: {
@@ -221,12 +229,12 @@ export class TenCandlesCharacterSheet extends HandlebarsApplicationMixin(
         text:
           system.brink.text ||
           game.i18n.localize("ETC.Character.BrinkPlaceholder"),
-        available: system.brinkAvailable,
-        stateClass: system.brinkAvailable
+        available: brinkAvailable,
+        stateClass: brinkAvailable
           ? "is-unlocked"
           : "is-locked",
         statusLabel: game.i18n.localize(
-          system.brinkAvailable
+          brinkAvailable
             ? "ETC.Character.BrinkAvailable"
             : system.brinkBurned
               ? "ETC.Character.BrinkBurned"
