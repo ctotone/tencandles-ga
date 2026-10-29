@@ -23,6 +23,10 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 
 **EN — New: “Final Messages”.** Players record their characters' final words through an integrated voice recorder; the GM can preview them privately and then play individual messages to the whole table using a native, volume-controlled Foundry playlist. Saving requires a **connected active GM**; confirmed messages are locked and archived per game. Version 1.2.0 also rerolls Hope dice when a Brink is embraced and counts a Moment as burned when its chat card is published. Thanks to **Vinai** for the rule and API contributions.
 
+**FR — Flammes animées.** Les dix bougies des thèmes concernés affichent désormais quatre animations WebM transparentes, lues à des instants différents pour un effet plus naturel. Le thème Forêt enfant conserve ses flammes spécifiques. Les anciennes scènes ne sont pas modifiées.
+
+**EN — Animated flames.** Supported candle themes now feature four transparent WebM flame animations spread across ten candles, with staggered playback for a more natural look. Children's Forest retains its dedicated flames. Existing scenes are not modified.
+
 **For module developers / Pour les développeurs de modules :** [`documentation/API_1.2.0.md`](documentation/API_1.2.0.md) documents `game.evilTenCandles.transferHopeDie(fromActorId, toActorId)` (active GM only) and the optional `game.evilTenCandles.requestPlayerRoll(actorUuid, { momentRequestId })` parameter.
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.

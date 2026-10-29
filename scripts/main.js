@@ -90,6 +90,10 @@ import {
   syncOfficialCanvas
 } from "./canvas/sync.js";
 
+import {
+  registerFlameAnimationHooks
+} from "./canvas/flame-animations.js";
+
 export { SYSTEM_ID };
 
 const MANAGED_CANVAS_ROLES = new Set([
@@ -98,6 +102,8 @@ const MANAGED_CANVAS_ROLES = new Set([
   "blue-die",
   "red-die"
 ]);
+
+registerFlameAnimationHooks();
 
 const DEFAULT_CHARACTER_AVATAR =
   `systems/${SYSTEM_ID}/assets/actor/avatar-ten-candles.webp`;

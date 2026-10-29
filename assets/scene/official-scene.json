@@ -1040,7 +1040,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_2.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1132,7 +1132,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_3.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1178,7 +1178,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_3.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1270,7 +1270,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_2.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1316,7 +1316,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_4.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1408,7 +1408,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_4.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1684,7 +1684,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_1.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -1730,7 +1730,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_1.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -2190,7 +2190,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_1.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_1.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,
@@ -2236,7 +2236,7 @@
     },
     {
       "texture": {
-        "src": "systems/tencandles-ga/assets/scene/candles/fire_2.webp",
+        "src": "systems/tencandles-ga/assets/scene/candles/fireloop_2.webm",
         "anchorX": 0.5,
         "anchorY": 0.5,
         "scaleX": 1,

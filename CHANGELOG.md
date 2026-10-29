@@ -13,6 +13,12 @@
 - **Archivage par partie** : chaque message est rattaché à l'identifiant de la partie (`gameId`). Les fichiers des anciennes parties restent sur le serveur et ne se mélangent pas avec ceux de la partie en cours. Retirer une entrée de la liste **n'efface pas physiquement le fichier audio**.
 - **Interface localisée dans six langues** (FR, EN, DE, ES, IT, PT-BR). L'accès à la lecture et à la suppression des messages validés est réservé au MJ dans l'interface. Le système ne promet pas de confidentialité contre l'accès direct aux URL des fichiers.
 
+#### Flammes animées sur le canevas officiel
+
+- **Flammes vivantes en WebM** : dans les thèmes classiques avec bougies, dix flammes utilisent quatre animations différentes, réparties entre les bougies et démarrant à des instants décalés pour éviter un mouvement uniforme. Animations en boucle, silencieuses, avec transparence ; positions et dimensions des bougies inchangées.
+- **Thème Forêt enfant préservé** : ses flammes spécifiques `fire_3.png` restent inchangées. Le thème Futur conserve sa présentation sans flammes.
+- La nouveauté s'applique **aux scènes nouvellement créées** depuis les modèles 1.2.0. Aucune migration des scènes existantes ; les images statiques historiques restent incluses dans le système.
+
 #### Ajustements des règles — contributions de Vinai
 
 - **PR [#4](https://github.com/ctotone/tencandles-ga/pull/4) — Embrasser sa Limite :** la relance concerne désormais **l'intégralité du jet**, y compris tous les dés d'Espoir. Les anciens résultats, même les 6, sont abandonnés. Cette règle est appliquée directement, **sans nouveau paramètre optionnel** ; le mode Accéléré ne transforme toujours pas les dés d'Espoir.
@@ -26,6 +32,7 @@
 
 **Merci à Vinai** pour ses PR #4, #5 et #6, son examen attentif des règles et ses propositions de code. Les contributions ont été relues et adaptées aux choix de Ten Candles – Game Assistant.
 
+
 ### English
 
 #### Headline feature — “Final Messages” built-in voice recorder
@@ -36,6 +43,12 @@
 - **Private GM preview and table-wide playback**: the GM can check any recorded message locally, then play individual messages on demand through a **native Foundry Playlist**, with volume control in the Playlists sidebar. Playback is never chained or triggered automatically by the final candle.
 - **Per-game archiving**: recordings are indexed by `gameId`; previous games' files remain on the server but do not appear in the current game's list. Removing a message entry **does not physically delete its audio file**.
 - **Six interface languages** (FR, EN, DE, ES, IT, PT-BR). Saved-message play/delete controls are GM-only in the interface. Direct file URLs are not guaranteed to be private.
+
+#### Animated flames on the official canvas
+
+- **Living WebM flames:** candle-based themes now display ten flames drawn from four distinct transparent, silent, looping animations. Each candle starts at a different point in the animation to avoid synchronized movement; the original candle placement and dimensions are unchanged.
+- **Children's Forest stays unchanged:** its dedicated `fire_3.png` flame is preserved. The Futuristic theme still has no flames.
+- This applies to **newly created scenes** using the updated 1.2.0 templates. Existing scenes are not migrated, and the original static assets remain packaged.
 
 #### Rule adjustments — contributions from Vinai
 
@@ -50,7 +63,6 @@
 
 **Thanks to Vinai** for PRs #4, #5 and #6, for reviewing the rules so carefully, and for sharing practical implementations. The changes have been reviewed and adapted to the project's design choices.
 
-**Validation note:** local checks and some live Foundry feedback cover parts of the recorder (including private preview and group playback), but **end-to-end microphone recording has not been retested for 1.2.0**. Multiclient behavior, browser compatibility, and the updated rules/APIs still need real-session verification.
 
 ## 1.1.0 — Nouveautés et correctifs / Features and fixes
 
