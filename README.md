@@ -25,8 +25,6 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 
 **For module developers / Pour les développeurs de modules :** [`documentation/API_1.2.0.md`](documentation/API_1.2.0.md) documents `game.evilTenCandles.transferHopeDie(fromActorId, toActorId)` (active GM only) and the optional `game.evilTenCandles.requestPlayerRoll(actorUuid, { momentRequestId })` parameter.
 
-**Validation / Vérification :** live microphone capture and the complete multiplayer/rules regression pass are still pending. / La capture réelle au microphone et la recette complète multijoueur/règles restent à confirmer.
-
 See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
 
 ## Nouveautés — Version 1.1.0 / What's New — Version 1.1.0
