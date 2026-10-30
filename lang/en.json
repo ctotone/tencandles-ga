@@ -394,6 +394,7 @@
   "ETC.SceneTheme.Medieval": "Medieval",
   "ETC.SceneTheme.Magie": "Magic",
   "ETC.SceneTheme.Lovecraft": "Lovecraft",
+  "ETC.SceneTheme.Halloween": "Halloween",
   "ETC.SceneTheme.Western": "Western",
   "ETC.Hope.Transferred": "{from} transfers a Hope die to {to}.",
   "ETC.Hope.NoneToGive": "{name} has no Hope die to transfer.",

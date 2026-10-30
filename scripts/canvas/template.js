@@ -15,7 +15,8 @@ const CANVAS_TEMPLATE_PATHS = Object.freeze({
   [CANVAS_THEMES.MEDIEVAL]: `systems/${SYSTEM_ID}/assets/scene/medieval-scene.json`,
   [CANVAS_THEMES.LOVECRAFT]: `systems/${SYSTEM_ID}/assets/scene/lovecraft-scene.json`,
   [CANVAS_THEMES.MAGIE]: `systems/${SYSTEM_ID}/assets/scene/magie-scene.json`,
-  [CANVAS_THEMES.WESTERN]: `systems/${SYSTEM_ID}/assets/scene/western-scene.json`
+  [CANVAS_THEMES.WESTERN]: `systems/${SYSTEM_ID}/assets/scene/western-scene.json`,
+  [CANVAS_THEMES.HALLOWEEN]: `systems/${SYSTEM_ID}/assets/scene/halloween-scene.json`
 });
 
 const cachedTemplates = new Map();

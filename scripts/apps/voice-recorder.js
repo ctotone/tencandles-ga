@@ -12,6 +12,7 @@ import { getCollectiveState, isActiveGM } from "../state/game-state.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 const l = (key) => game.i18n.localize(`ETC.Voice.${key}`);
+const GM_PRIVATE_PREVIEW_VOLUME = 0.6;
 const format = (seconds) => `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
 
 export class TenCandlesVoiceRecorder extends HandlebarsApplicationMixin(ApplicationV2) {
@@ -296,6 +297,7 @@ export class TenCandlesVoiceRecorder extends HandlebarsApplicationMixin(Applicat
     }
     this._stopGMPreview();
     const audio = new Audio(record.path);
+    audio.volume = GM_PRIVATE_PREVIEW_VOLUME;
     this.gmPreview = audio;
     this.gmPreviewRecordId = recordId;
     audio.addEventListener("ended", () => {

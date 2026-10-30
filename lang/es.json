@@ -394,6 +394,7 @@
   "ETC.SceneTheme.Medieval": "Medieval",
   "ETC.SceneTheme.Magie": "Magia",
   "ETC.SceneTheme.Lovecraft": "Lovecraft",
+  "ETC.SceneTheme.Halloween": "Halloween",
   "ETC.SceneTheme.Western": "Oeste",
   "ETC.Hope.Transferred": "{from} transfiere un dado de Esperanza a {to}.",
   "ETC.Hope.NoneToGive": "{name} no tiene dados de Esperanza para transferir.",

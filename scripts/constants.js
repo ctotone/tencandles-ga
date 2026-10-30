@@ -44,7 +44,7 @@ export const INSTANT_REQUEST_STATUSES = Object.freeze({
 });
 
 export const DEFAULT_CANVAS_TEMPLATE_ID = "official-dark";
-export const CANVAS_THEMES = Object.freeze({ CLASSIC: "classic", POST_APO: "post-apo", FUTUR: "futur", FORET_ENFANT: "foret-enfant", MEDIEVAL: "medieval", MAGIE: "magie", LOVECRAFT: "lovecraft", WESTERN: "western" });
+export const CANVAS_THEMES = Object.freeze({ CLASSIC: "classic", POST_APO: "post-apo", FUTUR: "futur", FORET_ENFANT: "foret-enfant", MEDIEVAL: "medieval", MAGIE: "magie", LOVECRAFT: "lovecraft", WESTERN: "western", HALLOWEEN: "halloween" });
 
 export const COLLECTIVE_STATE_CHANGED_HOOK =
   `${SYSTEM_ID}.collectiveStateChanged`;

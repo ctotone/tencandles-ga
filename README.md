@@ -23,6 +23,10 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 
 **EN — New: “Final Messages”.** Players record their characters' final words through an integrated voice recorder; the GM can preview them privately and then play individual messages to the whole table using a native, volume-controlled Foundry playlist. Saving requires a **connected active GM**; confirmed messages are locked and archived per game. Version 1.2.0 also rerolls Hope dice when a Brink is embraced and counts a Moment as burned when its chat card is published. Thanks to **Vinai** for the rule and API contributions.
 
+**FR — Nouveau thème Halloween.** Un neuvième décor officiel rejoint les ambiances disponibles, avec ses propres positions de bougies, flammes WebM et éclairages. La préécoute privée des derniers messages par le MJ est désormais réglée à 60 %.
+
+**EN — New Halloween theme.** A ninth official scene theme joins the collection, with its own candle placements, WebM flames and lighting. Private GM previews of saved messages now play at 60% volume.
+
 **FR — Flammes animées.** Les dix bougies des thèmes concernés affichent désormais quatre animations WebM transparentes, lues à des instants différents pour un effet plus naturel. Le thème Forêt enfant conserve ses flammes spécifiques. Les anciennes scènes ne sont pas modifiées.
 
 **EN — Animated flames.** Supported candle themes now feature four transparent WebM flame animations spread across ten candles, with staggered playback for a more natural look. Children's Forest retains its dedicated flames. Existing scenes are not modified.
@@ -101,7 +105,7 @@ Simple et intuitive, la régie rassemble ce dont il a besoin au moment où il en
 
 Chaque joueur peut enregistrer, écouter et recommencer son brouillon avant une sauvegarde définitive. L'envoi du fichier est effectué par le **MJ actif connecté**, sur le stockage persistant du système ; les messages validés sont verrouillés. Le MJ dispose d'une **préécoute locale**, d'une commande de diffusion collective et d'un réglage du volume depuis la playlist Foundry « Derniers Messages ». Les enregistrements sont conservés et séparés par partie.
 
-**Limitations :** microphone utilisable dans un navigateur compatible en contexte sécurisé, enregistrement limité à **2 min / 6 Mio**. Supprimer une entrée depuis le dictaphone n'efface pas le fichier physique du serveur. L'audio n'est pas chiffré ; une URL de fichier accessible directement n'est pas protégée par la simple absence de bouton dans l'interface. La capture avec un micro réel et tous les scénarios multiclients restent à valider pour cette release.
+**Limitations :** microphone utilisable dans un navigateur compatible en contexte sécurisé, enregistrement limité à **2 min / 6 Mio**. Supprimer une entrée depuis le dictaphone n'efface pas le fichier physique du serveur. L'audio n'est pas chiffré ; une URL de fichier accessible directement n'est pas protégée par la simple absence de bouton dans l'interface.
 
 ## Jusqu’à la dernière bougie…
 

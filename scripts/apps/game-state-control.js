@@ -125,6 +125,7 @@ export class TenCandlesStateControl extends HandlebarsApplicationMixin(
         magieSelected: state.canvasTheme === CANVAS_THEMES.MAGIE,
         lovecraftSelected: state.canvasTheme === CANVAS_THEMES.LOVECRAFT,
         westernSelected: state.canvasTheme === CANVAS_THEMES.WESTERN,
+        halloweenSelected: state.canvasTheme === CANVAS_THEMES.HALLOWEEN,
         canEdit: state.canModify && !state.hasActiveResolution
       },
       gameplay: {

@@ -1,6 +1,6 @@
 # Changelog — Ten Candles – Game Assistant
 
-## 1.2.0 — Derniers Messages, règles et API / Final Messages, rules and API — 29 octobre 2026
+## 1.2.0 — Derniers Messages, règles et API / Final Messages, rules and API — 30 octobre 2026
 
 ### Français
 
@@ -12,6 +12,11 @@
 - **Écoute privée et diffusion à la table** : le MJ peut préécouter localement chaque message (icône casque), puis choisir le moment de sa diffusion individuelle. La lecture collective s'appuie sur une **Playlist native Foundry**, avec volume réglable dans l'onglet Playlists, sans enchaînement automatique ni déclenchement à la dernière bougie.
 - **Archivage par partie** : chaque message est rattaché à l'identifiant de la partie (`gameId`). Les fichiers des anciennes parties restent sur le serveur et ne se mélangent pas avec ceux de la partie en cours. Retirer une entrée de la liste **n'efface pas physiquement le fichier audio**.
 - **Interface localisée dans six langues** (FR, EN, DE, ES, IT, PT-BR). L'accès à la lecture et à la suppression des messages validés est réservé au MJ dans l'interface. Le système ne promet pas de confidentialité contre l'accès direct aux URL des fichiers.
+
+#### Nouveau thème Halloween et préécoute MJ
+
+- **Neuvième thème officiel — Halloween** : décor rituel sombre, citrouilles et accessoires inquiétants, avec dix bougies, flammes WebM et éclairages positionnés spécialement pour ce thème. Accessible depuis la sélection de thème de la régie MJ, sans modifier les autres ambiances.
+- **Préécoute privée du MJ à 60 %** : les messages validés sont préécoutés localement à un niveau de volume fixé à 60 %. La diffusion collective et la réécoute des brouillons des joueurs ne changent pas.
 
 #### Flammes animées sur le canevas officiel
 
@@ -43,6 +48,11 @@
 - **Private GM preview and table-wide playback**: the GM can check any recorded message locally, then play individual messages on demand through a **native Foundry Playlist**, with volume control in the Playlists sidebar. Playback is never chained or triggered automatically by the final candle.
 - **Per-game archiving**: recordings are indexed by `gameId`; previous games' files remain on the server but do not appear in the current game's list. Removing a message entry **does not physically delete its audio file**.
 - **Six interface languages** (FR, EN, DE, ES, IT, PT-BR). Saved-message play/delete controls are GM-only in the interface. Direct file URLs are not guaranteed to be private.
+
+#### Halloween theme and private GM preview
+
+- **Ninth official theme — Halloween:** a dark ritual setting with pumpkins and eerie details, featuring ten candles with dedicated WebM flame placements and lighting. Available from the GM theme selector, without affecting other themes.
+- **GM private preview at 60% volume:** previewing a saved character message locally now uses a fixed 60% volume. Group playback and players' draft previews remain unchanged.
 
 #### Animated flames on the official canvas
 
