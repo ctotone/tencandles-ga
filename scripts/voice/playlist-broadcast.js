@@ -10,6 +10,11 @@ import { getCollectiveState, isActiveGM } from "../state/game-state.js";
 const PLAYLIST_FLAG = "lastMessagesPlaylist";
 const SOUND_FLAG = "lastMessagesTrack";
 
+// Volume initial des « Derniers Messages » en diffusion collective (0 = muet, 1 = 100 %).
+// Modifier cette valeur pour les essais ; elle est réappliquée au début de chaque message.
+const LAST_MESSAGE_VOLUME = 0.70;
+const LAST_MESSAGE_CHANNEL = "environment";
+
 const currentGameId = () => getCollectiveState().gameId;
 const isOwnedPlaylist = (playlist) => playlist?.getFlag(SYSTEM_ID, PLAYLIST_FLAG) === true;
 
@@ -34,17 +39,23 @@ export function getVoicePlaylistState() {
 
 async function ensurePlaylist() {
   const existing = managedPlaylist();
-  if (existing) return existing;
+  // Les mondes 1.2.0 peuvent déjà posséder une Playlist créée sur « music ».
+  if (existing) {
+    if (existing.channel !== LAST_MESSAGE_CHANNEL) {
+      await existing.update({ channel: LAST_MESSAGE_CHANNEL });
+    }
+    return existing;
+  }
   return foundry.documents.Playlist.create({
     name: game.i18n.localize("ETC.Voice.PlaylistName"),
     mode: CONST.PLAYLIST_MODES.DISABLED, // soundboard: never auto-chain recordings
-    channel: "music", fade: 0,
+    channel: LAST_MESSAGE_CHANNEL, fade: 0,
     ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE },
     flags: { [SYSTEM_ID]: { [PLAYLIST_FLAG]: true } }
   });
 }
 
-/** A single reusable track preserves the GM's manual volume setting. */
+/** Single reusable track; the chosen baseline volume applies to each new message. */
 async function ensureTrack(playlist, record) {
   let sound = managedTrack(playlist);
   const attributes = {
@@ -52,7 +63,8 @@ async function ensureTrack(playlist, record) {
     path: record.path,
     repeat: false,
     fade: 0,
-    channel: "music",
+    channel: LAST_MESSAGE_CHANNEL,
+    volume: LAST_MESSAGE_VOLUME,
     pausedTime: 0,
     playing: false,
     flags: { [SYSTEM_ID]: {
@@ -62,12 +74,13 @@ async function ensureTrack(playlist, record) {
     } }
   };
   if (sound) {
-    // Native playlist updates are broadcast by Foundry; never update volume here.
+    // Reset to the configured test volume when a NEW message starts.
+    // The GM may still adjust the native slider during playback.
     await sound.update(attributes);
     return sound;
   }
   const documents = await playlist.createEmbeddedDocuments("PlaylistSound", [
-    { ...attributes, volume: 0.8 }
+    attributes
   ]);
   sound = documents[0];
   if (!sound) throw new Error("Foundry did not create the voice playlist track");

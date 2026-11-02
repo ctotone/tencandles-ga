@@ -5,11 +5,14 @@
   "description": "Système communautaire non officiel pour Ten Candles sur Foundry VTT 14. Il assiste les fiches, les conflits, les bougies et les dés, avec une régie MJ, un canevas optionnel et un dictaphone de derniers messages vocaux.",
   "authors": [
     {
-      "name": "Evilbram"
+      "name": "Evilbram",
+      "url": "https://github.com/ctotone",
+      "email": "ctotone@gmail.com",
+      "discord": "evilbram"
     }
   ],
   "background": "systems/tencandles-ga/assets/system-background.webp",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "compatibility": {
     "minimum": 14,
     "verified": 14
@@ -75,7 +78,7 @@
   "persistentStorage": true,
   "url": "https://github.com/ctotone/tencandles-ga",
   "manifest": "https://github.com/ctotone/tencandles-ga/releases/latest/download/system.json",
-  "download": "https://github.com/ctotone/tencandles-ga/releases/download/1.2.0/tencandles-ga.zip",
+  "download": "https://github.com/ctotone/tencandles-ga/releases/download/1.2.1/tencandles-ga.zip",
   "readme": "README.md",
   "bugs": "https://github.com/ctotone/tencandles-ga/issues"
 }

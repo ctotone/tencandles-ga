@@ -223,8 +223,15 @@ export class TenCandlesVoiceRecorder extends HandlebarsApplicationMixin(Applicat
     this.busyMessage = l("MicroRequest");
     this.render();
     try {
-      await this.capture.start(() => { void this._stop(); });
-      if (!this.rendered) { this.capture.discard(); return; }
+      const started = await this.capture.start(() => {
+        void this._stop().catch((error) => {
+          console.error("tencandles-ga | Dictaphone:", error);
+          ui.notifications.error(`${l("Error")}: ${error.message}`);
+          this._setStatus(l("Error"));
+          if (this.rendered) this.render();
+        });
+      });
+      if (!started || !this.rendered) { this.capture.discard(); return; }
       this.recording = true;
       this._setStatus("");
       this._startTicker();
@@ -235,9 +242,13 @@ export class TenCandlesVoiceRecorder extends HandlebarsApplicationMixin(Applicat
   }
   async _stop() {
     if (this.recording) {
+      const recordingGameId = this.gameId;
+      const recordingActorId = this.actorId;
       this.recording = false;
       this._stopTicker();
       const draft = await this.capture.stop();
+      if (!this.rendered || recordingGameId !== getCollectiveState().gameId ||
+          recordingActorId !== this.actorId) return;
       if (draft) {
         this._discardDraft();
         this.draft = draft;

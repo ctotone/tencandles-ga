@@ -17,6 +17,12 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 </p>
 
 
+## Nouveautés — Version 1.2.1 / What's New — Version 1.2.1
+
+**FR — « Derniers Messages » : son « Vieux dictaphone ».** Les voix sont filtrées pendant l'enregistrement (égalisation et compression légère), avant la sauvegarde. Le brouillon écouté par le joueur est exactement le fichier traité qui sera entendu ensuite. La diffusion collective utilise désormais le canal audio **Environnement**, avec un volume initial de **70 %** à chaque nouveau message ; le curseur natif reste ajustable et le volume maître Environnement de chaque participant continue de s'appliquer. Préécoute privée MJ inchangée.
+
+**EN — “Final Messages”: vintage recorder sound.** Voices are filtered during recording (EQ and gentle compression), before the audio file is saved. The player's draft preview plays the same processed file that everyone will later hear. Group playback now uses the **Environment** audio channel, starting each new message at **70%** volume; the native slider remains adjustable and each participant's Environment master volume still applies. Private GM preview is unchanged.
+
 ## Nouveautés — Version 1.2.0 / What's New — Version 1.2.0
 
 **FR — Nouveau : « Derniers Messages ».** Les joueurs enregistrent leurs derniers mots dans un dictaphone intégré au système ; le MJ peut les préécouter en privé puis les diffuser à toute la table, au moment choisi, via une playlist native Foundry au volume réglable. Les enregistrements sont sauvegardés avec un **MJ actif connecté**, verrouillés après validation et conservés par partie. La version 1.2.0 applique également la relance complète des dés d'Espoir avec la Limite et fait compter l'Instant comme brûlé dès la publication de sa carte. Merci à **Vinai** pour ses contributions aux règles et aux API.
@@ -103,7 +109,7 @@ Simple et intuitive, la régie rassemble ce dont il a besoin au moment où il en
 
 À la fin de l'histoire, le MJ peut diffuser les messages enregistrés par les personnages, **un à un et dans l'ordre de son choix**, sans automatisme lié à l'extinction de la dernière bougie. L'accès au dictaphone se trouve au-dessus de la liste des personnages.
 
-Chaque joueur peut enregistrer, écouter et recommencer son brouillon avant une sauvegarde définitive. L'envoi du fichier est effectué par le **MJ actif connecté**, sur le stockage persistant du système ; les messages validés sont verrouillés. Le MJ dispose d'une **préécoute locale**, d'une commande de diffusion collective et d'un réglage du volume depuis la playlist Foundry « Derniers Messages ». Les enregistrements sont conservés et séparés par partie.
+Chaque joueur peut enregistrer, écouter et recommencer son brouillon avant une sauvegarde définitive. L'envoi du fichier est effectué par le **MJ actif connecté**, sur le stockage persistant du système ; les messages validés sont verrouillés. Le MJ dispose d'une **préécoute locale**, d'une commande de diffusion collective et d'un réglage du volume depuis la playlist Foundry « Derniers Messages ». Depuis la 1.2.1, les voix sont traitées à l’enregistrement avec un rendu « Vieux dictaphone » ; la lecture collective utilise le canal **Environnement**, avec un volume de piste initial de **70 %** modifiable dans Foundry. Les enregistrements sont conservés et séparés par partie.
 
 **Limitations :** microphone utilisable dans un navigateur compatible en contexte sécurisé, enregistrement limité à **2 min / 6 Mio**. Supprimer une entrée depuis le dictaphone n'efface pas le fichier physique du serveur. L'audio n'est pas chiffré ; une URL de fichier accessible directement n'est pas protégée par la simple absence de bouton dans l'interface.
 

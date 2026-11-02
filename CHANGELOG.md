@@ -1,5 +1,23 @@
 # Changelog — Ten Candles – Game Assistant
 
+## 1.2.1 — Vieux dictaphone et diffusion audio / Vintage recorder and audio playback — 2 novembre 2026
+
+### Français
+
+- **« Derniers Messages » — voix de vieux dictaphone :** traitement automatique appliqué au microphone **avant l'enregistrement** (passe-haut 300 Hz, présence +3 dB à 1 200 Hz, passe-bas 3 200 Hz et compression modérée). Le fichier sauvegardé contient déjà cet effet ; la préécoute du brouillon, la préécoute du MJ et la diffusion collective ne le réappliquent pas. Aucun bruit ni crépitement artificiel ajouté.
+- **Diffusion collective par canal Environnement :** les messages utilisent maintenant le canal audio natif **Environnement** plutôt que **Musique**. Lors de la prochaine diffusion, la Playlist du système déjà présente est adaptée sans création de doublon.
+- **Volume initial de diffusion à 70 % :** chaque nouveau message démarre à `0.70` via la constante `LAST_MESSAGE_VOLUME` dans `scripts/voice/playlist-broadcast.js`. Le curseur de volume natif reste ajustable pendant la lecture ; chaque participant conserve son réglage maître Environnement. La préécoute privée du MJ reste inchangée (60 %).
+- **Métadonnées :** ajout du lien GitHub de l'auteur (`https://github.com/ctotone`), ainsi que de son e-mail et de son identifiant Discord dans `system.json`.
+- **Aucun changement** aux droits d'accès, au stockage, à la durée maximale (2 min / 6 Mio), aux règles du jeu, aux scènes existantes ni au déclenchement manuel des Playlists. Les anciens enregistrements restent lisibles sans conversion.
+
+### English
+
+- **“Final Messages” — vintage recorder voice:** automatic processing of the microphone signal **before recording** (300 Hz high-pass, +3 dB presence boost at 1,200 Hz, 3,200 Hz low-pass and moderate dynamic compression). The saved audio already contains the effect; neither draft playback, private GM preview nor group playback applies it again. No artificial hiss or crackle is added.
+- **Group playback via the Environment channel:** saved messages now use Foundry's native **Environment** audio channel instead of **Music**. An existing system-managed Playlist is updated on next playback without creating duplicates.
+- **70% initial playback volume:** each new message begins at `0.70`, configured through `LAST_MESSAGE_VOLUME` in `scripts/voice/playlist-broadcast.js`. The native volume control remains adjustable during playback, while each participant retains their own Environment master volume. Private GM preview remains unchanged (60%).
+- **Author metadata:** added the author's GitHub profile (`https://github.com/ctotone`), email address and Discord handle to `system.json`.
+- **No changes** to permissions, storage, duration/size limits (2 min / 6 MiB), game rules, existing scenes or manually triggered Playlist playback. Older audio files remain playable without conversion.
+
 ## 1.2.0 — Derniers Messages, règles et API / Final Messages, rules and API — 30 octobre 2026
 
 ### Français
