@@ -21,6 +21,20 @@ const FLOATING_ROLL_BUTTON_ID =
 let floatingRollBusy = false;
 let sceneControlRollBusy = false;
 
+// Absence de préférence = bouton visible, y compris pour les scènes anciennes.
+export const SCENE_ROLL_BUTTON_FLAG = "hideFloatingRollButton";
+
+export function isFloatingRollHiddenOnScene(scene) {
+  return scene?.getFlag?.(SYSTEM_ID, SCENE_ROLL_BUTTON_FLAG) === true;
+}
+
+function getViewedScene() {
+  // La scène du canvas est locale à chaque client : ne pas utiliser la scène
+  // active du monde ni la scène officielle du système.
+  return canvas?.scene ?? null;
+}
+
+
 async function triggerPlayerRollFromSceneControl(event) {
   event?.preventDefault?.();
 
@@ -100,6 +114,12 @@ export function refreshPlayerRollControls() {
   );
 
   if (!button) return;
+
+  const viewedScene = getViewedScene();
+  const hidden = !viewedScene || isFloatingRollHiddenOnScene(viewedScene);
+  button.hidden = hidden;
+  // Le CSS du bouton fixe display:flex : l'attribut hidden seul ne suffit pas.
+  button.style.display = hidden ? "none" : "";
 
   const state = getRollButtonState();
 

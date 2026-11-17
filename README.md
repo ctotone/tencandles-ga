@@ -17,6 +17,12 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 </p>
 
 
+## Nouveautés — Version 1.2.2 / What's New — Version 1.2.2
+
+**FR — Bouton de dés par scène.** Le MJ peut maintenant masquer ou afficher le gros bouton flottant « Lancer les dés » pour chaque scène, grâce au clic droit sur une scène dans l’onglet Scènes. Le bouton reste visible par défaut. Le choix est conservé et s’applique automatiquement à chaque joueur selon la scène qu’il regarde. Les jets et les autres commandes ne changent pas.
+
+**EN — Dice button per scene.** GMs can now hide or show the large floating “Roll Dice” button for each scene by right-clicking a scene in the Scenes sidebar. The button is visible by default. The choice is saved and automatically applies to each player based on the scene they are viewing. Dice rolls and other controls remain unchanged.
+
 ## Nouveautés — Version 1.2.1 / What's New — Version 1.2.1
 
 **FR — « Derniers Messages » : son « Vieux dictaphone ».** Les voix sont filtrées pendant l'enregistrement (égalisation et compression légère), avant la sauvegarde. Le brouillon écouté par le joueur est exactement le fichier traité qui sera entendu ensuite. La diffusion collective utilise désormais le canal audio **Environnement**, avec un volume initial de **70 %** à chaque nouveau message ; le curseur natif reste ajustable et le volume maître Environnement de chaque participant continue de s'appliquer. Préécoute privée MJ inchangée.

@@ -1,5 +1,19 @@
 # Changelog — Ten Candles – Game Assistant
 
+## 1.2.2 — Bouton de dés par scène / Dice button per scene — 17 novembre 2026
+
+### Français
+
+- Le MJ peut désormais **masquer ou afficher le gros bouton « Lancer les dés » pour chaque scène**, via un clic droit sur la scène dans l’onglet Scènes.
+- Le bouton reste **visible par défaut**. Le choix est conservé et s’applique automatiquement à tous les joueurs, selon la scène qu’ils regardent.
+- Les jets de dés et les autres commandes restent inchangés.
+
+### English
+
+- GMs can now **hide or show the large “Roll Dice” button for each scene** by right-clicking a scene in the Scenes sidebar.
+- The button remains **visible by default**. The choice is saved and applies automatically to all players based on the scene they are viewing.
+- Dice rolls and other controls are unchanged.
+
 ## 1.2.1 — Vieux dictaphone et diffusion audio / Vintage recorder and audio playback — 2 novembre 2026
 
 ### Français

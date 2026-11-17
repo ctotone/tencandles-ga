@@ -545,7 +545,12 @@ export async function repairOfficialCanvas({
       fog: template.fog,
       environment: template.environment,
       transition: template.transition,
-      flags: template.flags
+      // La réparation ne doit pas supprimer les préférences propres à la scène.
+      flags: foundry.utils.mergeObject(
+        foundry.utils.deepClone(scene.flags ?? {}),
+        template.flags ?? {},
+        { inplace: false }
+      )
     }, {
       diff: true,
       render: canvas.scene?.id === scene.id

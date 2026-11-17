@@ -60,6 +60,8 @@ import {
   isPartyLifecycleLocked
 } from "./management/party-lock.js";
 
+import { registerSceneRollVisibilityContextOptions } from "./controls/scene-roll-visibility.js";
+
 import {
   mountFloatingPlayerRollButton,
   refreshPlayerRollControls,
@@ -435,6 +437,14 @@ Hooks.on("userConnected", () => {
     if (sheet.rendered) sheet.render();
   }
 });
+
+Hooks.on("getSceneContextOptions", registerSceneRollVisibilityContextOptions);
+
+Hooks.on("updateScene", (scene) => {
+  if (canvas?.scene?.id === scene.id) refreshPlayerRollControls();
+});
+
+Hooks.on("canvasTearDown", refreshPlayerRollControls);
 
 Hooks.on("canvasReady", () => {
   mountFloatingPlayerRollButton();

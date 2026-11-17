@@ -12,7 +12,7 @@
     }
   ],
   "background": "systems/tencandles-ga/assets/system-background.webp",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "compatibility": {
     "minimum": 14,
     "verified": 14
@@ -78,7 +78,7 @@
   "persistentStorage": true,
   "url": "https://github.com/ctotone/tencandles-ga",
   "manifest": "https://github.com/ctotone/tencandles-ga/releases/latest/download/system.json",
-  "download": "https://github.com/ctotone/tencandles-ga/releases/download/1.2.1/tencandles-ga.zip",
+  "download": "https://github.com/ctotone/tencandles-ga/releases/download/1.2.2/tencandles-ga.zip",
   "readme": "README.md",
   "bugs": "https://github.com/ctotone/tencandles-ga/issues"
 }
