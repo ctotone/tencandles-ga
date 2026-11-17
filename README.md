@@ -17,46 +17,6 @@ Votre soutien est entièrement facultatif, mais toujours très apprécié. Merci
 </p>
 
 
-## Nouveautés — Version 1.2.2 / What's New — Version 1.2.2
-
-**FR — Bouton de dés par scène.** Le MJ peut maintenant masquer ou afficher le gros bouton flottant « Lancer les dés » pour chaque scène, grâce au clic droit sur une scène dans l’onglet Scènes. Le bouton reste visible par défaut. Le choix est conservé et s’applique automatiquement à chaque joueur selon la scène qu’il regarde. Les jets et les autres commandes ne changent pas.
-
-**EN — Dice button per scene.** GMs can now hide or show the large floating “Roll Dice” button for each scene by right-clicking a scene in the Scenes sidebar. The button is visible by default. The choice is saved and automatically applies to each player based on the scene they are viewing. Dice rolls and other controls remain unchanged.
-
-## Nouveautés — Version 1.2.1 / What's New — Version 1.2.1
-
-**FR — « Derniers Messages » : son « Vieux dictaphone ».** Les voix sont filtrées pendant l'enregistrement (égalisation et compression légère), avant la sauvegarde. Le brouillon écouté par le joueur est exactement le fichier traité qui sera entendu ensuite. La diffusion collective utilise désormais le canal audio **Environnement**, avec un volume initial de **70 %** à chaque nouveau message ; le curseur natif reste ajustable et le volume maître Environnement de chaque participant continue de s'appliquer. Préécoute privée MJ inchangée.
-
-**EN — “Final Messages”: vintage recorder sound.** Voices are filtered during recording (EQ and gentle compression), before the audio file is saved. The player's draft preview plays the same processed file that everyone will later hear. Group playback now uses the **Environment** audio channel, starting each new message at **70%** volume; the native slider remains adjustable and each participant's Environment master volume still applies. Private GM preview is unchanged.
-
-## Nouveautés — Version 1.2.0 / What's New — Version 1.2.0
-
-**FR — Nouveau : « Derniers Messages ».** Les joueurs enregistrent leurs derniers mots dans un dictaphone intégré au système ; le MJ peut les préécouter en privé puis les diffuser à toute la table, au moment choisi, via une playlist native Foundry au volume réglable. Les enregistrements sont sauvegardés avec un **MJ actif connecté**, verrouillés après validation et conservés par partie. La version 1.2.0 applique également la relance complète des dés d'Espoir avec la Limite et fait compter l'Instant comme brûlé dès la publication de sa carte. Merci à **Vinai** pour ses contributions aux règles et aux API.
-
-**EN — New: “Final Messages”.** Players record their characters' final words through an integrated voice recorder; the GM can preview them privately and then play individual messages to the whole table using a native, volume-controlled Foundry playlist. Saving requires a **connected active GM**; confirmed messages are locked and archived per game. Version 1.2.0 also rerolls Hope dice when a Brink is embraced and counts a Moment as burned when its chat card is published. Thanks to **Vinai** for the rule and API contributions.
-
-**FR — Nouveau thème Halloween.** Un neuvième décor officiel rejoint les ambiances disponibles, avec ses propres positions de bougies, flammes WebM et éclairages. La préécoute privée des derniers messages par le MJ est désormais réglée à 60 %.
-
-**EN — New Halloween theme.** A ninth official scene theme joins the collection, with its own candle placements, WebM flames and lighting. Private GM previews of saved messages now play at 60% volume.
-
-**FR — Flammes animées.** Les dix bougies des thèmes concernés affichent désormais quatre animations WebM transparentes, lues à des instants différents pour un effet plus naturel. Le thème Forêt enfant conserve ses flammes spécifiques. Les anciennes scènes ne sont pas modifiées.
-
-**EN — Animated flames.** Supported candle themes now feature four transparent WebM flame animations spread across ten candles, with staggered playback for a more natural look. Children's Forest retains its dedicated flames. Existing scenes are not modified.
-
-**For module developers / Pour les développeurs de modules :** [`documentation/API_1.2.0.md`](documentation/API_1.2.0.md) documents `game.evilTenCandles.transferHopeDie(fromActorId, toActorId)` (active GM only) and the optional `game.evilTenCandles.requestPlayerRoll(actorUuid, { momentRequestId })` parameter.
-
-See [CHANGELOG.md](CHANGELOG.md) for detailed release notes.
-
-## Nouveautés — Version 1.1.0 / What's New — Version 1.1.0
-
-**FR :** Huit thèmes de canevas, manuels MJ/Joueur FR et EN, mode Accéléré facultatif et améliorations mécaniques. Voir le changelog 1.1.0.
-
-**EN:** Eight canvas themes, FR/EN GM and Player manuals, optional Accelerated Mode and rule improvements. See the 1.1.0 changelog.
-
-## Nouveauté — Version 1.0.1
-
-Un accès **À propos de Ten Candles – Game Assistant** est disponible dans l’onglet Paramètres de Foundry VTT. Il affiche la version du système, les crédits, le dépôt GitHub et un lien facultatif **Buy a Coffee** vers Ko-fi. Interface localisée dans les six langues existantes.
-
 # Système de jeu - Ten Candles – Game Assistant
 
 ## Jouez à Ten Candles sur Foundry VTT sans laisser la technique prendre le pas sur la narration
